@@ -6,12 +6,8 @@ import { clients } from "../data/clientsData";
 
 export default function ClientsCarousel() {
   return (
-    <section className="text-white py-8 mt-16 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold mb-8 mt-4 text-yellow-400 text-center">
-          Our Clients
-        </h2>
-
+    <section className="text-white w-full">
+      <div className="rounded-2xl max-w-[90%] md:max-w-[73%] mx-auto py-4">
             <Swiper
             modules={[Autoplay]}
             loop={true}
@@ -40,7 +36,7 @@ export default function ClientsCarousel() {
         >
           {clients.map((client) => (
             <SwiperSlide key={client.id}>
-  <div className="w-[250px] h-[250px] bg-neutral-800 rounded-lg p-4 mx-auto flex flex-col items-center justify-center">
+  <div className="w-[250px] h-[250px] bg-neutral-900 rounded-lg p-4 mx-auto flex flex-col items-center justify-center">
     <img
       src={client.imagePath}
       alt={client.companyName}
@@ -58,6 +54,14 @@ export default function ClientsCarousel() {
           ))}
         </Swiper>
       </div>
+        <div className="mt-8 flex flex-col items-center justify-center">
+          <h2 className="text-3xl font-semibold text-center">
+            Alguns de nossos clientes
+          </h2>
+          <p className="text-[#FFB400]">Venha ser um case de sucesso também</p>
+          <a href="#form" className="text-black bg-gradient-to-r from-[#FFB400] to-[#cb8e00] mt-8 transition font-semibold px-24 py-4 md:px-33 md:py-4 rounded-md">Entrar em Contato</a>
+        </div>
+
     </section>
   );
 }
