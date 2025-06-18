@@ -68,7 +68,7 @@ const OurWork = () => {
                     ))}
                 </motion.div>
             </motion.div>
-            <h1 className="mt-8 text-4xl text-white font-semibold">Faz sentido para você?</h1>
+            <h1 className="mt-8 text-4xl text-white font-semibold text-center px-2">Faz sentido para você?</h1>
             <p className="text-white">Então entre em contato!</p>
         <a href="#form" className="text-white bg-gradient-to-r from-[#FFB400] to-[#cb8e00] mt-8 transition font-semibold px-24 py-4 md:px-33 md:py-4 rounded-md">Entrar em Contato</a>
 

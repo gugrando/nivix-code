@@ -5,6 +5,8 @@ import Headline from "../components/Headline";
 import FormContainer from "../components/Form/FormContainer";
 import ClientsCarousel from "../components/ClientsForm";
 import OurWork from "../components/OurWork";
+import Footer from "../components/Footer";
+import Exclusivist from "@/components/Exclusivist";
 
 const Home = () => {
   return (
@@ -21,11 +23,12 @@ const Home = () => {
       </section>
       <section className="w-full h-fit flex flex-col items-center">
         <ClientsCarousel />
-        <a href="#form" className="text-white bg-gradient-to-r from-[#FFB400] to-[#cb8e00] mt-8 transition font-semibold px-24 py-4 md:px-33 md:py-4 rounded-md">Entrar em Contato</a>
       </section>
       <section>
         <OurWork />
       </section>
+        <Exclusivist />
+        <Footer />
     </main>
   );
 }
