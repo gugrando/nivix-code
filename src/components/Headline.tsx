@@ -2,8 +2,8 @@
 const Headline = () => {
     return (
         <div className="w-full h-fit mt-13 flex justify-center flex-col items-center ">
-           <div className="mb-4 flex items-center relative justify-center border rounded-full px-4 py-1 border-[#FFB400] text-[#FFB400] text-sm">
-            Contrato livre de amarras
+           <div className="mb-4 flex items-center relative justify-center border rounded-full px-4 py-1 border-[#FFB400] text-[#FFB400] text-sm gap-2">
+            <img className="w-3" src="/cadeado-aberto.png" alt="" />Contrato livre de amarras
             {/* <span className="bg-[#FFB400] absolute right-[7px] h-1 w-1 inline-block rounded-full"></span> */}
            </div>
             <h1 className="text-4xl font-semibold text-center px-4 md:text-6xl max-w-6xl">

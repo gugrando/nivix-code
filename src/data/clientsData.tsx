@@ -22,7 +22,7 @@ export interface Client {
 export const clients: Client[] = [
   {
     id: 1,
-    companyName: "Empresa Alpha",
+    companyName: "Empresa X",
     description: "Especializada em soluções tecnológicas inovadoras.",
     imagePath: "/logoclientes4.png",
     socialLinks: [
