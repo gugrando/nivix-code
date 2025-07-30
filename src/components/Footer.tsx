@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className="bg-neutral-800 text-gray-300 mt-40">
       <div className="max-w-7xl mx-auto md:px-20 py-10 flex flex-col md:flex-row md:justify-between gap-8">
         {/* Logo e descrição */}
-        <div className="flex items-center gap-6 justify-center md:justify-start">
+        <div className="flex flex-col md:flex-row items-center gap-6 justify-center md:justify-start">
           <a href="#top">
             <Image src="/logo2.png" alt="Logo da NIVIX"width={50} height={50} priority/>
           </a>

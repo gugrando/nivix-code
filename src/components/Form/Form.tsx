@@ -51,6 +51,8 @@ export default function ContactForm() {
 
       if (res.ok) {
         reset();
+        console.log("Dados enviados com sucesso");
+        window.location.replace("/CadastroConcluido")
       } else {
         console.error("Erro ao enviar");
       }
@@ -86,7 +88,7 @@ export default function ContactForm() {
           />
           {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
         </div>
-
+      
         {/* Telefone */}
         <div>
           <input

@@ -8,38 +8,38 @@ const OurWork = () => {
     const questions = [
         {
             id: 1,
-            question: 'Aumentaar o número de pedidos ',
-            answer: 'Na Nivix, nosso foco é entregar resultados reais e personalizados. Trabalhamos lado a lado com nossos clientes, oferecendo soluções integradas que combinam criatividade, estratégia e tecnologia para alcançar seus objetivos de forma eficaz e sustentável.'
+            question: 'Vai aumentar o número de pedidos?',
+            answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Somos feito de performance e conversão, já fizemos pizzaria saltar de 12 para 97 pedidos em 21 dias. O que entregamos são estratégias testadas, anúncios segmentados e criativos que fazem o cliente clicar, pedir e repetir. Se não entregarmos resultado, seu dinheiro de volta, simples assim.'
         },
         {
             id: 2,
-            question: 'Como posso ter certeza de que a Nivix irá gerar resultados para meu negócio?',
-            answer: 'Nossa abordagem é orientada por dados e análises contínuas. A cada etapa da campanha, monitoramos de perto os resultados e ajustamos as estratégias para garantir que sua empresa tenha o melhor desempenho possível.'
+            question: 'Isso aí é mais um gasto? Já tentei marketing antes e não deu em nada.',
+            answer: 'Você não precisa de mais um post bonitinho. Você precisa de mesa cheia. Pedidos no iFood. Caixa batendo. A Nivix é focada em performance. Tem cliente que saiu de 3 pedidos por noite pra mais de 60 em 4 semanas.Se você já gastou com marketing e não deu resultado, o problema não era o marketing — era quem fez.'
         },
         {
             id: 3,
-            question: 'Como a Nivix pode ajudar a aumentar minhas vendas?',
-            answer: 'Focamos em criar campanhas direcionadas e altamente eficazes, usando as melhores práticas de marketing digital e otimização de conversões. A combinação de estratégias de tráfego pago, SEO e design envolvente contribui diretamente para o aumento das vendas.'
+            question: 'Quanto eu preciso investir pra ter resultado?',
+            answer: 'Tem pizzaria que fatura 30 mil com 1.500 de tráfego pago. E tem quem gaste 5 mil sem retorno porque não sabe o que está fazendo. Com a Nivix, cada real vai pra onde traz retorno, você não precisa gastar muito. Precisa investir certo.'
         },
         {
             id: 4,
-            question: 'Quais tipos de empresas vocês atendem?',
-            answer: 'Temos 3 equipes especializadas (Automotiva, Moda, Delivery) e a equipe Geral, mas atendemos empresas de todos os tamanhos e setores. Seja você uma pequena empresa ou uma grande corporação, temos soluções personalizadas para impulsionar sua marca e alcançar seus objetivos de negócios.'
+            question: 'Minha pizzaria é pequena. Será que vale a pena pra mim?',
+            answer: 'Quem cresce é quem tem coragem de sair na frente. Nossos maiores cases começaram pequenos — e hoje entregam mais de 300 pizzas por semana. Você quer ser mais um no bairro... ou quer dominar ele?'
         },
         {
             id: 5,
-            question: 'Quais serviços a Nivix oferece?',
-            answer: 'Oferecemos uma gama completa de serviços, 360°, incluindo design gráfico, desenvolvimento web, gestão de tráfego pago, estratégias de marketing digital, branding e consultoria. Tudo para garantir que sua empresa se destaque no mercado.'
+            question: 'O que exatamente a Nivix faz?',
+            answer: 'Vendemos estratégia que dá lucro. Uma gama completa de serviços para que a estrategia seja perfeita para o seu negócio decolar, cuidamos do tráfego,design, desenvolvimento web, social media, otimização de cardápio, recuperação de clientes, treinamento do time, consultoria completa, gestão estratégia e muito mais!'
         },
         {
             id: 6,
-            question: 'Qual é o prazo para ver resultados?',
-            answer: 'Os resultados podem variar dependendo da estratégia adotada e do tipo de serviço contratado. No entanto, trabalhamos com um planejamento claro e realista, buscando gerar os primeiros resultados visíveis já nas primeiras semanas de campanha.'
+            question: 'Em quanto tempo eu vejo resultado?',
+            answer: 'Você pode ver resultados já na primeira semana. Já tivemos pizzaria que dobrou o número de pedidos nos primeiros 10 dias. Se você tá com produto bom e estrutura mínima pronta, o resto é com a gente. Em até 30 dias você tera toda estrutura e resultados prontos. Quer testar? Em 7 dias a gente te mostra mais resultado do que a última agência te deu em 3 meses.'
         },
         {
             id: 7,
-            question: 'Qual é o investimento necessário para começar a trabalhar com a Nivix?',
-            answer: 'O investimento é personalizado, de acordo com as necessidades e objetivos da sua empresa. Após uma análise detalhada do seu negócio, criamos uma proposta que se encaixa no seu orçamento e entrega o maior valor possível para alcançar os resultados desejados. Se você tem essa dúvida, entre em contato e fale conosco sem compromisso!'
+            question: 'Quanto eu preciso investir?',
+            answer: 'Menos do que você perde todo mês deixando a casa vazia! Com menos de R$50 por dia em tráfego, já colocamos pizzarias pra fazer R$15 mil a mais no mês. Isso não é um gasto, é investimento no seu negócio, no seu sonho! A maioria dos donos joga dinheiro em promoção errada, post sem estratégia ou cupom que só tira lucro. A Nivix transforma cada real em pedido. Temos planos a partir de R$600 reais e o investimento minimo recomendado em tráfego é de R$450 por mês'
         }
     ]
 

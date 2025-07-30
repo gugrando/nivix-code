@@ -59,7 +59,7 @@ export default function ClientsCarousel() {
             Alguns de nossos clientes
           </h2>
           <p className="text-[#FFB400]">Venha ser um case de sucesso também</p>
-          <a href="#form" className="text-black bg-gradient-to-r from-[#FFB400] to-[#cb8e00] mt-8 transition font-semibold px-24 py-4 md:px-33 md:py-4 rounded-md">Entrar em Contato</a>
+          <a href="#form" className="text-black bg-gradient-to-r from-[#FFB400] to-[#cb8e00] mt-2 transition font-semibold px-24 py-4 md:px-33 md:py-4 rounded-md">Entrar em Contato</a>
         </div>
 
     </section>
