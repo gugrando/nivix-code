@@ -22,9 +22,9 @@ export interface Client {
 export const clients: Client[] = [
   {
     id: 1,
-    companyName: "Empresa X",
-    description: "Especializada em soluções tecnológicas inovadoras.",
-    imagePath: "/logoclientes4.png",
+    companyName: "Forno e Famiglia",
+    description: "Social Media e Gestão de Tráfego Pago",
+    imagePath: "/logoclientes4.png",                                                        
     socialLinks: [
       { icon: <FaFacebook size={18} />, url: "#" },
       { icon: <FaGooglePlusG size={18} />, url: "#" },
@@ -36,7 +36,7 @@ export const clients: Client[] = [
   {
     id: 2,
     companyName: "Familia Italia",
-    description: "Comércio varejista focado em qualidade e atendimento.",
+    description: "Tráfego Pago, Gestão de Social Media e Desenvolvimento de Site",
     imagePath: "/logoclientes1.png",
     socialLinks: [
       { icon: <FaFacebook size={18} />, url: "#" },
@@ -49,7 +49,7 @@ export const clients: Client[] = [
   {
     id: 3,
     companyName: "Hober Pizzaria",
-    description: "Prestadora de serviços empresariais com excelência.",
+    description: "Social Media e Gestão de Tráfego Pago",
     imagePath: "/logoclientes2.png",
     socialLinks: [
       { icon: <FaFacebook size={18} />, url: "#" },
@@ -62,7 +62,7 @@ export const clients: Client[] = [
   {
     id: 4,
     companyName: "Anabela - Forno a Lenha",
-    description: "Consultoria em TI e desenvolvimento personalizado.",
+    description: "Consultoria estratégica, social media e gestão de tráfego pago",
     imagePath: "/logoclientes3.png",
     socialLinks: [
       { icon: <FaFacebook size={18} />, url: "#" },
@@ -75,7 +75,7 @@ export const clients: Client[] = [
   {
     id: 5,
     companyName: "Hober Pizzaria",
-    description: "Inovação em hardware e soluções integradas.",
+    description: "Social Media, Gestão de Tráfego Pago e Controle de Delivery/ERP",
     imagePath: "/logoclientes2.png",
     socialLinks: [
       { icon: <FaFacebook size={18} />, url: "#" },

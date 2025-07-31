@@ -6,7 +6,8 @@ import FormContainer from "../components/Form/FormContainer";
 import ClientsCarousel from "../components/ClientsForm";
 import OurWork from "../components/OurWork";
 import Footer from "../components/Footer";
-import Exclusivist from "@/components/Exclusivist";
+import Exclusivist from "../components/Exclusivist";
+import ClientVideos from "../components/ClientVideos";
 
 const Home = () => {
   return (
@@ -25,8 +26,12 @@ const Home = () => {
         <ClientsCarousel />
       </section>
       <section>
+        <ClientVideos />
+      </section>
+      <section>
         <OurWork />
       </section>
+      
         <Exclusivist />
         <Footer />
     </main>
