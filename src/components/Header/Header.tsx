@@ -13,17 +13,17 @@ const Header = () => {
         {/* Menu */}
         <ul className="hidden lg:flex items-center space-x-10 text-white">
           <li>
-            <a href="#" className="hover:text-[#FFBE2E] transition">Parceiros</a>
+            <a href="#parceiros" className="hover:text-[#FFBE2E] transition">Parceiros</a>
           </li>
           <li>
-            <a href="#" className="hover:text-[#FFBE2E] transition">Depoimentos</a>
+            <a href="#depoimentos" className="hover:text-[#FFBE2E] transition">Depoimentos</a>
           </li>
           <li>
-            <a href="#" className="hover:text-[#FFBE2E] transition">Sobre Nivix</a>
+            <a href="#FAQ" className="hover:text-[#FFBE2E] transition">Sobre Nivix</a>
           </li>
           <li>
             <a
-              href="#"
+              href="#form"
               className="bg-[#FFB400] hover:bg-yellow-400 transition text-black px-16 py-3 rounded-md"
             >
               Contato

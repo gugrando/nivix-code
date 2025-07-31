@@ -7,7 +7,7 @@ import { clients } from "../data/clientsData";
 export default function ClientsCarousel() {
   return (
     <section className="text-white w-full">
-      <div className="rounded-2xl max-w-[90%] md:max-w-[73%] mx-auto py-4">
+      <div id="parceiros" className="rounded-2xl max-w-[90%] md:max-w-[73%] mx-auto py-4">
             <Swiper
             modules={[Autoplay]}
             loop={true}

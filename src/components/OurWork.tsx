@@ -44,7 +44,7 @@ const OurWork = () => {
     ]
 
     return (
-        <motion.section className="w-full h-full flex flex-col justify-center items-center mt-40">  
+        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center mt-40">  
             <h1 className=" text-2xl text-[#FFB400] font-semibold">O que faremos?</h1>
             <motion.div className="flex flex-col justify-center items-center lg:items-center lg:flex-row w-full lg:px-32">
                 <motion.div className="gap-1 flex flex-col justify-center w-full md:w-11/12 lg:w-11/12 h-fit max-with-[1400px] p-2 md:p-8 rounded-lg">
