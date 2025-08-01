@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 const HUBSPOT_API_URL = "https://api.hubapi.com/crm/v3/objects/deals";
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
     const data = await request.json();
 
@@ -51,9 +51,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Erro interno:", error);
-    return NextResponse.json(
-      { error: "Erro interno do servidor" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Erro interno do servidor" }, { status: 500 });
   }
 }
