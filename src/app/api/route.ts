@@ -1,34 +1,21 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 const HUBSPOT_API_URL = "https://api.hubapi.com/crm/v3/objects/deals";
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // CORS Headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-
-  if (req.method === "OPTIONS") {
-    // Resposta rápida para preflight
-    return res.status(200).end();
-  }
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  console.log("Requisição recebida na API de contato");
-
-  const { nome, empresa, faturamento, investimento, telefone } = req.body;
-
-  if (!nome || !telefone) {
-    return res.status(400).json({
-      error: "Nome e telefone são obrigatórios para criar o negócio (deal)",
-    });
-  }
-
+export async function POST(request: NextRequest) {
   try {
+    const data = await request.json();
+
+    const { nome, empresa, faturamento, investimento, telefone } = data;
+
+    if (!nome || !telefone) {
+      return NextResponse.json(
+        { error: "Nome e telefone são obrigatórios para criar o negócio (deal)" },
+        { status: 400 }
+      );
+    }
+
     const body = {
       properties: {
         dealname: `${nome} - ${empresa ?? "Sem empresa"}`,
@@ -52,16 +39,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!response.ok) {
       const errorData = await response.json();
       console.error("Erro HubSpot:", errorData);
-      return res
-        .status(500)
-        .json({ error: errorData.message || "Erro ao enviar para HubSpot" });
+      return NextResponse.json(
+        { error: errorData.message || "Erro ao enviar para HubSpot" },
+        { status: 500 }
+      );
     }
 
-    return res
-      .status(200)
-      .json({ message: "Negócio (deal) criado com sucesso no HubSpot" });
+    return NextResponse.json(
+      { message: "Negócio (deal) criado com sucesso no HubSpot" },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Erro interno:", error);
-    return res.status(500).json({ error: "Erro interno do servidor" });
+    return NextResponse.json(
+      { error: "Erro interno do servidor" },
+      { status: 500 }
+    );
   }
 }
