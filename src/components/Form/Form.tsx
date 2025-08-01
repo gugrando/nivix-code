@@ -43,7 +43,7 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await fetch("/api/submitContact", {
+      const res = await fetch("/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -52,7 +52,7 @@ export default function ContactForm() {
       if (res.ok) {
         reset();
         console.log("Dados enviados com sucesso");
-        window.location.replace("/CadastroConcluido")
+        window.location.replace("/CadastroConcluido");
       } else {
         console.error("Erro ao enviar");
       }
@@ -61,14 +61,12 @@ export default function ContactForm() {
     }
   };
 
-  const inputStyle = "w-full rounded-md bg-neutral-700/70 border-2 border-neutral-700 placeholder-white text-white px-10 py-3 md:py-4.5 md:px-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50";
+  const inputStyle =
+    "w-full rounded-md bg-neutral-700/70 border-2 border-neutral-700 placeholder-white text-white px-10 py-3 md:py-4.5 md:px-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50";
 
   return (
-    
     <div className="w-full flex items-center justify-center">
-      
       <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[90%] space-y-4">
-
         {/* Nome */}
         <div>
           <input
@@ -76,7 +74,9 @@ export default function ContactForm() {
             className={inputStyle}
             placeholder="Seu nome"
           />
-          {errors.nome && <p className="text-red-400 text-sm">{errors.nome.message}</p>}
+          {errors.nome && (
+            <p className="text-red-400 text-sm">{errors.nome.message}</p>
+          )}
         </div>
 
         {/* Email */}
@@ -86,9 +86,11 @@ export default function ContactForm() {
             className={inputStyle}
             placeholder="Seu melhor e-mail"
           />
-          {errors.email && <p className="text-red-400 text-sm">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-400 text-sm">{errors.email.message}</p>
+          )}
         </div>
-      
+
         {/* Telefone */}
         <div>
           <input
@@ -96,7 +98,9 @@ export default function ContactForm() {
             className={inputStyle}
             placeholder="Telefone"
           />
-          {errors.telefone && <p className="text-red-400 text-sm">{errors.telefone.message}</p>}
+          {errors.telefone && (
+            <p className="text-red-400 text-sm">{errors.telefone.message}</p>
+          )}
         </div>
 
         {/* Empresa */}
@@ -106,7 +110,9 @@ export default function ContactForm() {
             className={inputStyle}
             placeholder="Nome da empresa"
           />
-          {errors.empresa && <p className="text-red-400 text-sm">{errors.empresa.message}</p>}
+          {errors.empresa && (
+            <p className="text-red-400 text-sm">{errors.empresa.message}</p>
+          )}
         </div>
 
         {/* Faturamento */}
