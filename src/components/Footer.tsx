@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-// import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -17,9 +17,9 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex items-center justify-center gap-4">
-            {/* <FaInstagram size={30} style={{ cursor: 'pointer', color: 'inherit' }} />
-            <FaFacebook size={30} style={{ cursor: 'pointer', color: 'inherit' }} />
-            <FaLinkedin size={30} style={{ cursor: 'pointer', color: 'inherit' }} /> */}
+            <span className="text-[#F4B400] w-8"><FaInstagram /></span>
+            <span className="text-[#F4B400] w-8"><FaFacebook /></span>
+            <span className="text-[#F4B400] w-8"><FaLinkedin /></span>
         </div>
       </div>
     
