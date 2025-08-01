@@ -4,6 +4,8 @@ const HUBSPOT_API_URL = "https://api.hubapi.com/crm/v3/objects/deals";
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log("Token HubSpot no deploy:", HUBSPOT_ACCESS_TOKEN ? "OK" : "NÃO DEFINIDO");
+
   console.log("Requisição recebida na API de contato");
 
   if (req.method !== "POST")
