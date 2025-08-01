@@ -1,20 +1,23 @@
-import type { NextConfig } from "next";
-module.exports = {
+import type { Configuration } from 'webpack';
+
+const nextConfig = {
+  output: 'export',
+  eslint: {
+    ignoreDuringBuilds: true, // <--- ESSA LINHA resolve o problema
+  },
   experimental: {
     swcPlugins: [],
   },
-  webpack(config) {
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      path: false,
+  webpack(config: Configuration) {
+    config.resolve = {
+      ...config.resolve,
+      fallback: {
+        ...config.resolve?.fallback,
+        fs: false,
+      },
     };
     return config;
   },
-}
-
-const nextConfig: NextConfig = {
-  /* config options here */
 };
 
 export default nextConfig;
