@@ -4,7 +4,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa6";
 
 const OurWork = () => {
-    const [openQuestion, setOpenQuestion] = useState(null);
+    const [openQuestion, setOpenQuestion] = useState<number | null>(null);
     const questions = [
         {
             id: 1,
@@ -55,7 +55,7 @@ const OurWork = () => {
                                     <img src="/verificar.png" alt="" className="w-6"/>
                                     {questions.question}
                                 </span>
-                                {openQuestion === questions.id ? <FaChevronUp className="text-[#FFB400]" /> : <FaChevronDown className="" />}
+                                {openQuestion === questions.id ? <span className="text-[#FFB400]"><FaChevronUp  /></span> : <span><FaChevronDown /></span>}
                             </motion.button>
                             <AnimatePresence>
                                 {openQuestion === questions.id && (
