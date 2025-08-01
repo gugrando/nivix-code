@@ -17,9 +17,9 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex items-center justify-center gap-4">
-            <span className="text-[#F4B400] w-8"><FaInstagram /></span>
-            <span className="text-[#F4B400] w-8"><FaFacebook /></span>
-            <span className="text-[#F4B400] w-8"><FaLinkedin /></span>
+            <span className="text-[#F4B400] w-16"><FaInstagram /></span>
+            <span className="text-[#F4B400] w-16"><FaFacebook /></span>
+            <span className="text-[#F4B400] w-16"><FaLinkedin /></span>
         </div>
       </div>
     
