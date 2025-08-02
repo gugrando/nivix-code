@@ -48,7 +48,7 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
+ 
       if (res.ok) {
         reset();
         console.log("Dados enviados com sucesso");
@@ -80,7 +80,7 @@ export default function ContactForm() {
         </div>
 
         {/* Email */}
-        <div>
+        {/* <div>
           <input
             {...register("email")}
             className={inputStyle}
@@ -89,7 +89,7 @@ export default function ContactForm() {
           {errors.email && (
             <p className="text-red-400 text-sm">{errors.email.message}</p>
           )}
-        </div>
+        </div> */}
 
         {/* Telefone */}
         <div>
