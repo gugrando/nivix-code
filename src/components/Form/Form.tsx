@@ -43,7 +43,7 @@ export default function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const res = await fetch("/api/SubmitContact", {
+      const res = await fetch("/api/submit-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
