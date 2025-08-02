@@ -20,7 +20,7 @@ const valoresPermitidos = [
 
 const schema = z.object({
   nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
-  email: z.string().email("Email inválido"),
+  // email: z.string().email("Email inválido"),
   telefone: z.string().min(8, "Telefone inválido").max(20, "Telefone muito longo"),
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   faturamento: z.enum(valoresPermitidos as [string, ...string[]], {
