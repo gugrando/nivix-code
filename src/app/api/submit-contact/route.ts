@@ -18,6 +18,7 @@ export async function POST(request: Request) {
 
     const body = {
       properties: {
+        // email: email,
         dealname: `${nome} - ${empresa ?? "Sem empresa"}`,
         faturamento_mensal: faturamento ?? "",
         investimento_marketing: investimento?.toString() ?? "",

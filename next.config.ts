@@ -1,7 +1,6 @@
 import type { Configuration } from 'webpack';
 
 const nextConfig = {
-  output: 'export',
   eslint: {
     ignoreDuringBuilds: true, // <--- ESSA LINHA resolve o problema
   },
