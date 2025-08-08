@@ -9,7 +9,7 @@ export default function CadastroConcluido() {
 
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).fbq) {
-      (window as any).fbq("track", "Lead"); // Ou 'Lead', 'CompleteRegistration', etc.
+      (window as any).fbq("track", "Lead"); // Ou outro evento: 'Lead', 'CompleteRegistration', etc.
     }
   }, []);
 
