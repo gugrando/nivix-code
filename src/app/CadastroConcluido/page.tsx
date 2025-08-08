@@ -3,8 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useEffect } from "react";
 
 export default function CadastroConcluido() {
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "Lead"); // Ou 'Lead', 'CompleteRegistration', etc.
+    }
+  }, []);
+
   return (
     <div className="flex items-center h-screen justify-center">
         <div className="flex flex-col items-center mb-15">
