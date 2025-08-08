@@ -15,8 +15,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Facebook Pixels */}
-        <Script id="fb-pixels" strategy="afterInteractive">
+        {/* Facebook Pixel único */}
+        <Script id="fb-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -27,18 +27,11 @@ export default function RootLayout({
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
 
-            fbq('init', '1526749968295734'); // Pixel PageView
-            fbq('init', '3121882674652791'); // Pixel Conversão
+            fbq('init', '3121882674652791'); // Seu Pixel ID único
             fbq('track', 'PageView');
           `}
         </Script>
         <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1526749968295734&ev=PageView&noscript=1"
-          />
           <img
             height="1"
             width="1"
