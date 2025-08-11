@@ -33,10 +33,13 @@ const schema = z.object({
   // email: z.string().email("Email inválido"),
   telefone: z
   .string()
-  .transform((val) => val.replace(/\D/g, "")) // Remove tudo que não é número
-  .regex(/^\d+$/, "Digite apenas números")
   .min(8, "Telefone inválido")
-  .max(15, "Telefone muito longo"),
+  .max(15, "Telefone muito longo")
+  .transform((val) => val.replace(/\D/g, "")) // remove não dígitos
+  .refine((val) => /^\d+$/.test(val), {
+    message: "Digite apenas números",
+  }),
+
 
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   faturamento: z.enum(valoresPermitidos as [string, ...string[]], {
