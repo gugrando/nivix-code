@@ -27,7 +27,7 @@ export default function CadastroConcluido() {
           </Link>
         <div className="absolute top-[49%] md:top-[55%] left-1/2 w-[380px] h-[600px] md:w-[600px] lg:w-[1000px] md:h-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full z-0 pointer-events-none blur-2xl bg-[radial-gradient(circle,rgba(255,180,0,0.4)_0%,rgba(255,180,0,0.05)_20%,rgba(255,180,0,0)_90%)]" />
 
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 relative">
+          <h1 className="flex flex-col items-center text-5xl md:text-6xl font-extrabold mb-4 relative">
             Cadastro <span className="text-[#FFB400]">Concluído!</span>
           </h1>
 
