@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       headers: {
         Authorization: `Bearer ${HUBSPOT_ACCESS_TOKEN}`,
         "Content-Type": "application/json",
-      },
+      }, 
       body: JSON.stringify(body),
     });
 

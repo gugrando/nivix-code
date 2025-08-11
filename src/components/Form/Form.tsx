@@ -18,15 +18,27 @@ const valoresPermitidos = [
   "Acima de R$ 1 milhão",
 ];
 
+const investimentosPermitidos = [
+  "Nada",
+  "Até R$ 1.000",
+  "De R$ 1.000 a R$ 5.000",
+  "De R$ 5.000 a R$ 10.000",
+  "De R$ 10.000 a R$ 20.000",
+  "De R$ 20.000 a R$ 30.000",
+  "Acima de R$ 30.000",
+];
+
 const schema = z.object({
   nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   // email: z.string().email("Email inválido"),
-  telefone: z.string().min(8, "Telefone inválido").max(20, "Telefone muito longo"),
+  telefone: z.string().min(8, "Telefone inválido").max(15, "Telefone muito longo"),
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   faturamento: z.enum(valoresPermitidos as [string, ...string[]], {
     errorMap: () => ({ message: "Selecione uma opção válida" }),
   }),
-  investimento: z.string().min(1, "Informe seu investimento"),
+  investimento: z.enum(investimentosPermitidos as [string, ...string[]], {
+    errorMap: () => ({ message: "Selecione uma opção válida" }),
+  }),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -48,7 +60,7 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
- 
+
       if (res.ok) {
         reset();
         console.log("Dados enviados com sucesso");
@@ -78,18 +90,6 @@ export default function ContactForm() {
             <p className="text-red-400 text-sm">{errors.nome.message}</p>
           )}
         </div>
-
-        {/* Email */}
-        {/* <div>
-          <input
-            {...register("email")}
-            className={inputStyle}
-            placeholder="Seu melhor e-mail"
-          />
-          {errors.email && (
-            <p className="text-red-400 text-sm">{errors.email.message}</p>
-          )}
-        </div> */}
 
         {/* Telefone */}
         <div>
@@ -138,11 +138,20 @@ export default function ContactForm() {
 
         {/* Investimento */}
         <div>
-          <input
+          <select
             {...register("investimento")}
-            className={inputStyle}
-            placeholder="Quanto investe em marketing?"
-          />
+            className={inputStyle + ` appearance-none `}
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Quanto investe em marketing?
+            </option>
+            {investimentosPermitidos.map((valor) => (
+              <option key={valor} value={valor}>
+                {valor}
+              </option>
+            ))}
+          </select>
           {errors.investimento && (
             <p className="text-red-400 text-sm">{errors.investimento.message}</p>
           )}
