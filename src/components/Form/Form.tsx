@@ -35,10 +35,10 @@ const schema = z.object({
   .string()
   .min(8, "Telefone inválido")
   .max(15, "Telefone muito longo")
-  .transform((val) => val.replace(/\D/g, "")) // remove não dígitos
   .refine((val) => /^\d+$/.test(val), {
     message: "Digite apenas números",
-  }),
+  })
+  .transform((val) => val.replace(/\D/g, "")), // remove não dígitos
 
 
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
