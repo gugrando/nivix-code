@@ -31,7 +31,13 @@ const investimentosPermitidos = [
 const schema = z.object({
   nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   // email: z.string().email("Email inválido"),
-  telefone: z.string().min(8, "Telefone inválido").max(15, "Telefone muito longo"),
+  telefone: z
+  .string()
+  .transform((val) => val.replace(/\D/g, "")) // Remove tudo que não é número
+  .regex(/^\d+$/, "Digite apenas números")
+  .min(8, "Telefone inválido")
+  .max(15, "Telefone muito longo"),
+
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   faturamento: z.enum(valoresPermitidos as [string, ...string[]], {
     errorMap: () => ({ message: "Selecione uma opção válida" }),
