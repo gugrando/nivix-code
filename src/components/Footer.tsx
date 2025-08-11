@@ -17,7 +17,7 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex items-center justify-center gap-4">
-            <span className="text-[#F4B400]"><FaInstagram size={24} href="instagram.com/nivix.co" /></span>
+            <span className="text-[#F4B400]"><FaInstagram size={24} /></span>
             <span className="text-[#F4B400]"><FaFacebook size={24} /></span>
             <span className="text-[#F4B400]"><FaLinkedin size={24} /></span>
         </div>
