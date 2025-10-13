@@ -50,15 +50,15 @@ export const clients: Client[] = [
     fireText: "4 anos",
 
   },
-  {
-    id: 5,
-    companyName: "Gambito Bar",
-    description: "Social media bem feito, reconhecido na cidade, mas com baixo pedidos no delivery e um site que não condizia com o nível do estabelecimento. Foi onde entramos para mudar o jogo.",
-    imagePath: "/gamblogo.jpg",
-    fireImagePath: "/fogo.png",
-    fireText: "1 mês",
+  // {
+  //   id: 5,
+  //   companyName: "Gambito Bar",
+  //   description: "Social media bem feito, reconhecido na cidade, mas com baixo pedidos no delivery e um site que não condizia com o nível do estabelecimento. Foi onde entramos para mudar o jogo.",
+  //   imagePath: "/gamblogo.jpg",
+  //   fireImagePath: "/fogo.png",
+  //   fireText: "1 mês",
 
-  },
+  // },
   {
     id: 6,
     companyName: "Restaurante Sabores da Vila",
