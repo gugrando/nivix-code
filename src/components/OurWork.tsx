@@ -44,13 +44,14 @@ const OurWork = () => {
     ]
 
     return (
-        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center mt-40">  
-            <h1 className=" text-2xl text-[#FFB400] font-semibold">O que faremos?</h1>
-            <motion.div className="flex flex-col justify-center items-center lg:items-center lg:flex-row w-full lg:px-32">
+        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center mt-18">  
+            <h1 className=" text-4xl text-white font-semibold">O que faremos?</h1>
+            <p className="text-[#FFB400] max-w-xl text-center px-4">Não dependa mais de Ifood, liberte-se das taxas altas e aumente sua margem, fidelize clientes e tenha o maior lucro na operação, é nisso que somos especialistas</p>
+            <motion.div className="flex mt-8 flex-col justify-center items-center lg:items-center lg:flex-row w-full lg:px-32">
                 <motion.div className="gap-1 flex flex-col justify-center w-full md:w-11/12 lg:w-11/12 h-fit max-with-[1400px] p-2 md:p-8 rounded-lg">
                     {questions.map((questions) =>(
-                        <motion.div key={questions.id} className="flex flex-col items-center mb-4 last:mb-0 w-full"> 
-                            <motion.button whileInView={{ opacity: 1, x: 0, transition: { delay: 0.3 } }} initial={{ opacity: 0, x: -20 }}  id='al' aria-label="Abrir ou fechar pergunta" onClick={() => setOpenQuestion(openQuestion === questions.id ? null : questions.id)} className="shadow-white/10 shadow-[2px_2px_0px_0px] w-[83%] text-left text-xl focus:outline-none p-5 bg-neutral-800 text-white font-extrabold rounded-[10px] flex justify-between items center">
+                        <motion.div key={questions.id} className="flex flex-col items-center mb-4 last:mb-0 w-full px-2"> 
+                            <motion.button whileInView={{ opacity: 1, x: 0, transition: { delay: 0.3 } }} initial={{ opacity: 0, x: -20 }}  id='al' aria-label="Abrir ou fechar pergunta" onClick={() => setOpenQuestion(openQuestion === questions.id ? null : questions.id)} className="shadow-white/10 shadow-[1px_1px_0px_0px] w-full lg:w-[83%] text-left text-xl focus:outline-none p-5 bg-neutral-800/50 text-white font-extrabold rounded-[10px] flex justify-between items center">
                                 <span className="max-w-[90%] font-normal flex items-center gap-4">
                                     <img src="/verificar.png" alt="" className="w-6"/>
                                     {questions.question}
@@ -59,7 +60,7 @@ const OurWork = () => {
                             </motion.button>
                             <AnimatePresence>
                                 {openQuestion === questions.id && (
-                                    <motion.div className="mt-2 text-[#FFB400] ml-4 w-[83%]"  initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto"}} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}>
+                                    <motion.div className="mt-2 text-[#FFB400] ml-4 w-full lg:w-[83%]"  initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto"}} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}>
                                         <motion.p>{questions.answer}</motion.p>
                                     </motion.div>
                                 )}

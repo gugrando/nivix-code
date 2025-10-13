@@ -82,12 +82,11 @@ export default function ContactForm() {
     }
   };
 
-  const inputStyle =
-    "w-full rounded-md bg-neutral-700/70 border-2 border-neutral-700 placeholder-white text-white px-10 py-3 md:py-4.5 md:px-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50";
+  const inputStyle = "w-full rounded-md bg-neutral-700/80 border-2 border-neutral-700 placeholder-white text-white text-start px-3 py-5 md:py-4.5 md:px-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50";
 
   return (
     <div className="w-full flex items-center justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="lg:w-[90%] space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] lg:w-[90%] space-y-4">
         {/* Nome */}
         <div>
           <input
@@ -170,7 +169,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-yellow-500 hover:bg-yellow-400 disabled:bg-yellow-300 text-black font-semibold py-3 rounded-md transition"
+          className="hover:cursor-pointer w-full bg-yellow-500 hover:bg-yellow-400 disabled:bg-yellow-300 text-black font-semibold py-5 rounded-md transition"
         >
           {isSubmitting ? "Enviando..." : "Enviar"}
         </button>

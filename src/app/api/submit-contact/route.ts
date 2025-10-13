@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-
 const HUBSPOT_API_URL = "https://api.hubapi.com/crm/v3/objects/deals";
 const HUBSPOT_ACCESS_TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
 

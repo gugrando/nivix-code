@@ -3,11 +3,11 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="w-full h-[86px] px-6 md:px-12">
-      <nav className="w-full h-full flex items-center justify-between xl:px-50">
+    <header className="w-full h-[86px] px-6 lg:px-12 mt-3 lg:mt-0 border-b border-white/5">
+      <nav className=" w-full h-full flex items-center justify-between xl:px-50">
         {/* Logo */}
         <div className="flex justify-center lg:justify-start w-full lg:w-fit">
-          <img src="/logo.png" alt="Logo Nivix" className="w-40 md:w-34" />
+          <img src="/logo.png" alt="Logo Nivix" className="w-40 lg:w-34" />
         </div>
 
         {/* Menu */}

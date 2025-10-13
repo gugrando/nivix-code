@@ -15,10 +15,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1c1c1c;
+    --background: #101010;
     --foreground: #ededed;
   }
 }
+
 
 *{
   scroll-behavior: smooth;
@@ -36,4 +37,36 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+.animate-gradient-x {
+  background-size: 300% 100%; /* maior pra esconder a troca */
+  animation: gradient-x 30s linear infinite;
+}
+
+html {
+  /* Previne o Safari/Chrome de alterar o tamanho de fontes automaticamente em mobile */
+  -webkit-text-size-adjust: 100%; /* Safari, iOS */
+  box-sizing: border-box; margin: 0; padding: 0;
+  /* transform: scale(0.95); transform-origin: top left;  */
+}
+
+@supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
+  html {
+    text-size-adjust: 92%; 
+    transform: scale(0.98);
+    transform-origin: top;
+  }
 }
