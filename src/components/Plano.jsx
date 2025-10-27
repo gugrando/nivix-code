@@ -5,49 +5,49 @@ const Plano = () => {
             <p className="text-center text-lg text-[#FFB400] max-w-xl">Plano único, sem pegadinhas ou surpresas, nosso contrato é livre de quaisquer amarras, mensal ou trimestral sem mudança de valores.</p>
             <div className="flex flex-col items-center justify-center w-full md:w-[71%] gap-4 mt-4 px-2">
                 
-                <div className="w-full h-fit bg-neutral-900/50 border-2 border-neutral-700/50 rounded-2xl py-8 px-3">
+                <div className="w-full lg:w-2/3 h-fit bg-gradient-to-br from-yellow-800/50 to-[#F4B400]/80 border-2 border-[#F4B400]/50 rounded-2xl py-8 px-3 lg:px-8">
                     {/* <h1 className="text-2xl font-normal text-center">Nivix Essential</h1> */}
-                    <div className="flex flex-col items-center justify-center">
+                    {/* <div className="flex flex-col items-center justify-center">
                         <p className="text-center text-red-900 text-lg line-through">R$2690/m</p>
                         <p className="text-center text-6xl font-bold text-green-600">R$800</p>
                         <p className="text-center text-green-600">Mensal</p>
-                    </div>
+                    </div> */}
                     <p className="text-center py-2 border-t border-neutral-700/50 mt-8">Você está no controle e sabe tudo que vai receber, afinal não somos uma agência de post bonitinho e sim parceiros que vão te trazer resultados reais.</p>
                     <div className="flex flex-col items-center justify-center mt-6 gap-3">
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Tráfego Pago de Conversão</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Social Media Essencial</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Otimização dos canais de venda</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Análise de Resultados</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Cobertura de Promoções</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Relatórios Semanais e Mensal</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Automação Essencial</p>
                         </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Suporte 24h</p>
                         </span>
-                         <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-yellow-600/20 border border-neutral-700/50 rounded-2xl">
-                            <span className="w-3 h-3 bg-yellow-600 rounded-full"></span>
+                         <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
+                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
                             <p className="">Serviços Extras para o Seu Negócio</p>
                         </span>
                         <h2 className="text-2xl font-bold text-[#FFB400] mt-3">Por que um valor tão baixo?</h2>

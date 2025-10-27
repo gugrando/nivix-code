@@ -7,7 +7,7 @@ const ClientVideos: React.FC = () => {
     <section id="depoimentos" className="w-full px-4 py-10 flex justify-center mt-20">
       <div className=" bg-neutral-900/70 border-t border-b border-neutral-700/70 backdrop-blur-2xl gap-8 py-8 md:w-[71%] rounded-3xl w-fit h-fit flex flex-col items-center">
         <div className="text-center">
-          <h2 className="text-3xl lg:text-4xl font-semibold mb-2 text-[#F4B400] ">
+          <h2 className="text-3xl lg:text-4xl md:max-w-2xl md:mx-auto font-semibold mb-2 text-[#F4B400] ">
             Você viu como é simples dar o primeiro passo?
           </h2>
           <p className="text-md font-normal text-white mb-8 px-4">

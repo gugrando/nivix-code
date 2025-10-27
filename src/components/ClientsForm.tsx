@@ -42,7 +42,7 @@ export default function ClientsCarousel() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setClientes(622);
-    }, 40000); // 40 segundos
+    }, 40000); // 40  segundos
 
     return () => clearTimeout(timer);
   }, []);
@@ -50,14 +50,14 @@ export default function ClientsCarousel() {
 
   return (
     <section className="text-white bg-[#101010] w-full flex flex-col items-center py-12 select-none overflow-hidden relative">
-      <div className=" mb-4 flex w-[70%] lg:w-[18%] items-center justify-center text-center relative border rounded-full px-4 py-2 border-[#FFB400] text-[#FFB400] text-sm gap-2">
+      <div className=" mb-4 flex w-[75%] lg:w-[18%] bg-gradient-to-r from-[#FFB400]/20 to-[black]/5 backdrop-blur-lg items-center justify-center text-center relative border rounded-full px-4 py-2 border-[#FFB400] text-[#FFB400] text-sm gap-2">
           <span className="w-3 h-3 animate-pulse bg-[#FFB400] rounded-full"></span>
-          <p className="text-sm font-medium text-center">Atualmente com: <span className="animate-pulse">{clientes}</span> Clientes Ativos</p>
+          <p className="text-sm font-semibold text-center">Atualmente com: <span className="animate-pulse">{clientes}</span> Clientes Ativos</p>
           {/* <span className="bg-[#FFB400] absolute right-[7px] h-1 w-1 inline-block rounded-full"></span> */}
       </div>
       <div className="mb-8 flex flex-col items-center">
         <h1 className="text-4xl max-w-3xl text-center font-bold">De pizzarias de bairro a grandes franquias</h1>
-        <p className="text-lg px-6 max-w-2xl text-center text-[#F4B400]">Sem depender de sorte, pessoas como você confiaram em nós para dobrar os pedidos todos os dias com nosso método</p>
+        <p className="text-lg px-6 max-w-2xl text-center text-[#F4B400]">Sem depender de sorte, pessoas como você confiaram em nós</p>
       </div>
       <div className="w-full mx-auto flex flex-col items-center">
         

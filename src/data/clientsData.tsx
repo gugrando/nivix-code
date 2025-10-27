@@ -28,7 +28,7 @@ export const clients: Client[] = [
     companyName: "Vellaro Pizzaria",
     description: "Desacreditado de marketing, já tinha feito serviços frustrados com outra agência, a Vellaro confiou em nós e se tornou um dos maiores cases da Nivix",
     imagePath: "/vellarologo.jpeg",
-    fireImagePath: "/fogo-azul.png",
+    fireImagePath: "/fogo.png",
     fireText: "3 anos",
 
   },
@@ -37,7 +37,7 @@ export const clients: Client[] = [
     companyName: "Hober Pizzaria",
     description: "Enfrentava forte concorrencia na cidade, ajustamos o social media e canal de vendas, junto a trafégo de reconhecimento, ocasionou no maior numero de pedidos da história da pizzaria.",
     imagePath: "/logoclientes2.png",
-    fireImagePath: "/fogo-amarelo.png",
+    fireImagePath: "/fogo.png",
     fireText: "7 meses",
 
   },

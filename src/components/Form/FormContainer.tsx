@@ -51,7 +51,7 @@ export default function FormContainer() {
               <p>Agendamos uma consultoria gratuita e completa para seu negócio decolar</p>
             </motion.div>
             
-            <a href="#form" className="w-full text-center text-white bg-gradient-to-r hover:scale-[1.003] from-[#00ff2a] to-[#003f17] mt-6 transition font-semibold px-24 py-5 md:px-50 md:py-5 rounded-2xl">Preencher Formulário</a>
+            <a href="#form" className="w-full text-center text-white bg-gradient-to-r hover:scale-[1.003] from-[#00ff2a] to-[#003f17] mt-6 transition font-semibold px-4 py-5 md:px-50 md:py-5 rounded-2xl">Preencher Formulário</a>
 
         </div> 
     </div>
