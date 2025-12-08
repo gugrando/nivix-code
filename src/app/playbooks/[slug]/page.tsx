@@ -93,15 +93,19 @@ export default function PlaybookPage({ params }: { params: Promise<{ slug: strin
           </p>
 
           {slide.video && (
-            <div className="mt-8 relative w-full h-full md:w-1/4 md:h-1/4 md:mx-auto rounded-2xl overflow-hidden shadow-lg border border-neutral-800">
-              <video
-                controls
-                src={slide.video}
-                className="w-full h-full object-cover"
-                title={slide.title}
-              />
-            </div>
-          )}
+  <div className="mt-8 flex justify-center">
+    {/* container do vídeo, limita largura e força formato vertical */}
+    <div className="relative w-full max-w-sm aspect-[9/16] md:max-w-xs rounded-2xl overflow-hidden shadow-lg border border-neutral-800 bg-black">
+      <video
+        controls
+        src={slide.video}
+        title={slide.title}
+        className="w-full h-full object-contain"
+      />
+    </div>
+  </div>
+)}
+
 
           {/* 🔹 Links opcionais */}
             {slide.link && slide.link.length > 0 && (
