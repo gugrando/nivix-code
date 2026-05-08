@@ -1,116 +1,167 @@
 "use client";
-import React, { useState, useCallback, useEffect, useRef } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import React, { useState, useEffect } from "react";
 import { clients } from "../data/clientsData";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaFire, FaChevronLeft, FaChevronRight, FaArrowTrendUp } from "react-icons/fa6";
 
 export default function ClientsCarousel() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const autoplay = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
-
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    {
-      loop: true,
-      align: "center",
-      containScroll: "trimSnaps",
-    },
-    [autoplay.current]
-  );
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    emblaApi.on("select", onSelect);
-    onSelect();
-
-    // Reset autoplay ao interagir
-    const resetAutoplay = () => autoplay.current.reset();
-    emblaApi.on("pointerDown", resetAutoplay);
-
-    return () => {
-      emblaApi.off("pointerDown", resetAutoplay);
-    };
-  }, [emblaApi, onSelect]);
-
-
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [clientes, setClientes] = useState(621);
+
+  // Contador animado fake
   useEffect(() => {
     const timer = setTimeout(() => {
       setClientes(622);
-    }, 40000); // 40  segundos
-
+    }, 40000); 
     return () => clearTimeout(timer);
   }, []);
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % clients.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + clients.length) % clients.length);
+  };
+
+  // Autoplay
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 7000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  // Handler para o gesto de drag
+  const handleDragEnd = (event: any, info: any) => {
+    if (info.offset.x < -100) {
+      nextSlide();
+    } else if (info.offset.x > 100) {
+      prevSlide();
+    }
+  };
 
   return (
-    <section className="text-white bg-[#101010] w-full flex flex-col items-center py-12 select-none overflow-hidden relative">
-      <div className=" mb-4 flex w-[75%] lg:w-[18%] bg-gradient-to-r from-[#FFB400]/20 to-[black]/5 backdrop-blur-lg items-center justify-center text-center relative border rounded-full px-4 py-2 border-[#FFB400] text-[#FFB400] text-sm gap-2">
-          <span className="w-3 h-3 animate-pulse bg-[#FFB400] rounded-full"></span>
-          <p className="text-sm font-semibold text-center">Atualmente com: <span className="animate-pulse">{clientes}</span> Clientes Ativos</p>
-          {/* <span className="bg-[#FFB400] absolute right-[7px] h-1 w-1 inline-block rounded-full"></span> */}
+    <section className="text-white bg-[#101010] w-full flex flex-col items-center py-24 select-none overflow-hidden relative">
+      {/* Background Glow */}
+      <div className="absolute w-[600px] h-[600px] rounded-full bg-[#FFB400]/5 blur-[120px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+      <div className="mb-16 flex flex-col items-center px-4 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-6 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-2 border-[#FFB400]/30 text-[#FFB400] text-sm gap-3 backdrop-blur-md"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFB400] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#FFB400]"></span>
+          </span>
+          <p className="font-bold tracking-wide">Atualmente com: <span className="tabular-nums">{clientes}</span> Clientes Ativos</p>
+        </motion.div>
+
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+          De pizzarias de bairro a <br className="hidden md:block" /> 
+          <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.5)]">
+            grandes franquias
+          </span>
+        </h2>
+        <p className="text-lg md:text-2xl mt-4 text-neutral-400 max-w-2xl px-6">
+          Sem depender de sorte, pessoas como você confiaram em nós para escalar sua operação.
+        </p>
       </div>
-      <div className="mb-8 flex flex-col items-center">
-        <h1 className="text-4xl max-w-3xl text-center font-bold">De pizzarias de bairro a grandes franquias</h1>
-        <p className="text-lg px-6 max-w-2xl text-center text-[#F4B400]">Sem depender de sorte, pessoas como você confiaram em nós</p>
-      </div>
-      <div className="w-full mx-auto flex flex-col items-center">
+
+      <div className="w-full relative flex flex-col items-center">
         
-        {/* Slide */}
-        <div ref={emblaRef} className="overflow-hidden w-full lg:w-[68.7%]">
-          {/* Adiciona padding para garantir gap no último slide */}
-          <div className="flex gap-4 px-4">
-            {clients.map((client) => (
-              <div
-                key={client.id}
-                className="border-t border-b border-neutral-700/70 flex-shrink-0 p-6 w-[95%] md:w-[45%] lg:w-[33%] h-fit aspect-square bg-neutral-900 rounded-2xl flex flex-col items-center justify-start text-center"
-              >
-                
-                <div className="flex flex-col items-center gap-4 relative w-full">
-                  <img
-                    src={client.imagePath}
-                    alt={client.companyName}
-                    className="w-25 h-25 z-50 border-b border-neutral-700/70 object-cover rounded-xl"
-                  />
-                  <h3 className="text-2xl mt-6 font-semibold">{client.companyName}</h3>
-                  <div className="absolute top-[6rem] bg-neutral-900 border-t z-40 flex items-center justify-center gap-2 w-[70%] py-2 lg:py-2  border-neutral-700/70 rounded-full">
-                    <img className="w-6 animate-pulse" src={client.fireImagePath} alt="" />
-                    <p className="text-[#FFB400]">A {client.fireText} Conosco</p>
-                  </div>
-                </div>
-                
-                {/* Mid Baixo */}
-                <div className="mt-8 px-2 relative w-[100%] rounded-2xl flex flex-col items-center justify-center">
-                  <p className="text-neutral-400 text-center">"{client.description}"</p>
-                </div>
-                
-              </div>
-            ))}
+        {/* Carousel Window */}
+        <div className="w-full max-w-7xl overflow-visible px-4">
+          <div className="relative h-[550px] flex items-center justify-center">
+            
+            <AnimatePresence mode="popLayout" initial={false}>
+              {clients.map((client, index) => {
+                let position = index - currentIndex;
+                if (position < -1) position += clients.length;
+                if (position > (clients.length - 2)) position -= clients.length;
+                if (position < -1 || position > 1) return null;
+
+                const isCenter = position === 0;
+
+                return (
+                  <motion.div
+                    key={client.id}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    onDragEnd={handleDragEnd}
+                    initial={{ opacity: 0, scale: 0.8, x: position * 400 }}
+                    animate={{
+                      opacity: isCenter ? 1 : 0.3,
+                      scale: isCenter ? 1 : 0.8,
+                      x: position * (typeof window !== 'undefined' && window.innerWidth < 768 ? 320 : 450),
+                      zIndex: isCenter ? 30 : 10,
+                      filter: isCenter ? "blur(0px)" : "blur(2px)",
+                    }}
+                    transition={{ type: "spring", stiffness: 260, damping: 26 }}
+                    className="absolute w-[85%] md:w-[400px] h-[480px] bg-neutral-900/40 border-2 border-neutral-800/50 backdrop-blur-xl rounded-[40px] p-8 flex flex-col items-center justify-between text-center cursor-grab active:cursor-grabbing shadow-2xl"
+                  >
+                    <div className="relative w-full flex flex-col items-center">
+                      <div className="absolute inset-0 bg-white/5 blur-[20px] rounded-full"></div>
+                      <img
+                        src={client.imagePath}
+                        alt={client.companyName}
+                        className="w-24 h-24 z-10 object-cover rounded-3xl border border-white/10 shadow-xl"
+                      />
+                      <h3 className="text-2xl mt-6 font-bold text-white tracking-tight">{client.companyName}</h3>
+                      <div className="mt-4 flex items-center justify-center gap-2 px-4 py-1.5 bg-neutral-800/50 border border-neutral-700/30 rounded-full">
+                        <FaFire className="text-[#FFB400] text-sm animate-pulse" />
+                        <p className="text-[10px] font-black uppercase tracking-[0.1em] text-[#FFB400]">
+                          A {client.fireText} Conosco
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-6 relative flex-grow flex items-center">
+                      <p className="text-neutral-300 text-sm md:text-base italic leading-relaxed font-medium">
+                        "{client.description}"
+                      </p>
+                    </div>
+                    <div className="mt-6 w-10 h-0.5 bg-neutral-800"></div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* Indicadores */}
-        <div className="flex justify-center gap-2 mt-4">
-          {clients.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => emblaApi?.scrollTo(i)}
-              className={`h-2 w-2 rounded-full transition-all ${
-                i === selectedIndex ? "bg-[#FFB400] w-4" : "bg-gray-500/70"
-              }`}
-            />
-          ))}
+        {/* Minimalist Controls */}
+        <div className="flex flex-col items-center gap-8 mt-4">
+           <div className="flex gap-2">
+              {clients.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={`h-1 transition-all duration-300 rounded-full ${
+                    i === currentIndex ? "bg-[#FFB400] w-6" : "bg-neutral-800 w-2 opacity-50"
+                  }`}
+                />
+              ))}
+           </div>
         </div>
 
-        {/* Chamada */}
-        <div className="text-center mt-10">
-            <a href="#form" className="text-white bg-gradient-to-r from-[#FFB400] to-[#cb8e00] transition font-semibold px-24 py-5 md:px-33 md:py-4 rounded-md">Quero Fazer Parte</a>
-              {/* <button className="text-[#ffffff] font-semibold border-none rounded-lg py-3 px-6 underline opacity-30 mt-2">Ver detalhes do projeto</button> */}
+        {/* Action Button */}
+        <div className="text-center mt-12 px-4 w-full max-w-sm">
+            <motion.a 
+              href="#form" 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="block w-full text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold py-5 rounded-2xl shadow-[0_15px_40px_rgba(0,255,42,0.1)] text-lg tracking-tight uppercase"
+            >
+              Ativar Minha Escala Agora
+            </motion.a>
+        </div>
+
+        {/* DIVISOR DE SEÇÃO - HARD DIVIDER (CLEAN & REFINED) */}
+        <div className="w-full flex flex-col items-center mt-12 relative">
+            <div className="w-[1px] h-32 bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"></div>
+            <div className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10">
+                <FaArrowTrendUp className="text-[#FFB400] text-sm" />
+            </div>
+            <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"></div>
         </div>
       </div>
     </section>

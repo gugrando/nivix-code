@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import ClientVideos from "../components/ClientVideos";
 import Team from "../components/Team";
 import Plano from "../components/Plano";
+import Ecosystem360 from "../components/Ecosystem360";
 
 const Home = () => {
   useEffect(() => {
@@ -28,8 +29,9 @@ const Home = () => {
         <FormContainer />
         <ClientVideos />
         <ClientsCarousel />
+        <Ecosystem360 />
         <Plano />
-        {/* <Team /> */}
+        <Team />
         <OurWork />
         <Footer />
 

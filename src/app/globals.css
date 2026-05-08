@@ -60,13 +60,10 @@ html {
   /* Previne o Safari/Chrome de alterar o tamanho de fontes automaticamente em mobile */
   -webkit-text-size-adjust: 100%; /* Safari, iOS */
   box-sizing: border-box; margin: 0; padding: 0;
-  /* transform: scale(0.95); transform-origin: top left;  */
 }
 
 @supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
   html {
     text-size-adjust: 92%; 
-    transform: scale(0.98);
-    transform-origin: top;
   }
 }

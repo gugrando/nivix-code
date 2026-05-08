@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import SocialProof from "@/components/SocialProof";
 
 export const metadata: Metadata = {
   title: "Nivix",
@@ -40,7 +41,10 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className="">{children}</body>
+      <body className="">
+        {children}
+        <SocialProof />
+      </body>
     </html>
   );
 }

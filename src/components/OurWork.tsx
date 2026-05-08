@@ -1,78 +1,168 @@
-import { AnimatePresence, motion} from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa6";
-import { FaChevronUp } from "react-icons/fa6";
+import { FaArrowRight, FaChartLine, FaRocket, FaShieldHalved, FaMoneyBillTrendUp, FaStore, FaClock, FaChevronDown } from "react-icons/fa6";
 
 const OurWork = () => {
     const [openQuestion, setOpenQuestion] = useState<number | null>(null);
-    const questions = [
+
+    const mainQuestions = [
         {
             id: 1,
-            question: 'Vai aumentar o número de pedidos?',
-            answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Somos feito de performance e conversão, já fizemos pizzaria saltar de 12 para 97 pedidos em 21 dias. O que entregamos são estratégias testadas, anúncios segmentados e criativos que fazem o cliente clicar, pedir e repetir. Se não entregarmos resultado, seu dinheiro de volta, simples assim.'
+            icon: <FaChartLine />,
+            title: 'Vai aumentar o número de pedidos?',
+            answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Já fizemos pizzarias saltarem de 12 para 97 pedidos em 21 dias com estratégias validadas de performance.',
+            size: 'md:col-span-2',
+            color: '#FFB400'
         },
         {
             id: 2,
-            question: 'Isso aí é mais um gasto? Já tentei marketing antes e não deu em nada.',
-            answer: 'Você não precisa de mais um post bonitinho. Você precisa de mesa cheia. Pedidos no iFood. Caixa batendo. A Nivix é focada em performance. Tem cliente que saiu de 3 pedidos por noite pra mais de 60 em 4 semanas.Se você já gastou com marketing e não deu resultado, o problema não era o marketing — era quem fez.'
+            icon: <FaMoneyBillTrendUp />,
+            title: 'É um gasto ou investimento?',
+            answer: 'Você não precisa de post bonitinho, precisa de mesa cheia. A Nivix foca em ROI real. Se não entregarmos resultado, seu dinheiro volta.',
+            size: 'md:col-span-1',
+            color: '#00ff2a'
         },
         {
             id: 3,
-            question: 'Quanto eu preciso investir pra ter resultado?',
-            answer: 'Tem pizzaria que fatura 30 mil com 1.500 de tráfego pago. E tem quem gaste 5 mil sem retorno porque não sabe o que está fazendo. Com a Nivix, cada real vai pra onde traz retorno, você não precisa gastar muito. Precisa investir certo.'
+            icon: <FaRocket />,
+            title: 'Quanto investir?',
+            answer: 'Temos cases de faturamento de 30k com 1.5k de tráfego. Com a Nivix, cada real vai para onde traz retorno real.',
+            size: 'md:col-span-1',
+            color: '#FFB400'
         },
         {
             id: 4,
-            question: 'Minha pizzaria é pequena. Será que vale a pena pra mim?',
-            answer: 'Quem cresce é quem tem coragem de sair na frente. Nossos maiores cases começaram pequenos — e hoje entregam mais de 300 pizzas por semana. Você quer ser mais um no bairro... ou quer dominar ele?'
-        },
+            icon: <FaStore />,
+            title: 'Serve para restaurante pequeno?',
+            answer: 'Nossos maiores cases começaram pequenos e hoje dominam o bairro. O segredo é ter coragem de escalar antes da concorrência.',
+            size: 'md:col-span-2',
+            color: '#FFEA00'
+        }
+    ];
+
+    const technicalQuestions = [
         {
             id: 5,
-            question: 'O que exatamente a Nivix faz?',
-            answer: 'Vendemos estratégia que dá lucro. Uma gama completa de serviços para que a estrategia seja perfeita para o seu negócio decolar, cuidamos do tráfego,design, desenvolvimento web, social media, otimização de cardápio, recuperação de clientes, treinamento do time, consultoria completa, gestão estratégia e muito mais!'
+            question: 'O que exatamente a Nivix faz no dia a dia?',
+            answer: 'Cuidamos de tudo: gestão de tráfego pago (Meta/Google), criação de criativos de alta conversão, social media estratégico, otimização de cardápio digital e suporte 24h para sua operação de vendas.'
         },
         {
             id: 6,
-            question: 'Em quanto tempo eu vejo resultado?',
-            answer: 'Você pode ver resultados já na primeira semana. Já tivemos pizzaria que dobrou o número de pedidos nos primeiros 10 dias. Se você tá com produto bom e estrutura mínima pronta, o resto é com a gente. Em até 30 dias você tera toda estrutura e resultados prontos. Quer testar? Em 7 dias a gente te mostra mais resultado do que a última agência te deu em 3 meses.'
+            question: 'Preciso assinar um contrato de fidelidade?',
+            answer: 'Nosso contrato é livre de amarras. Acreditamos no resultado: se você está ganhando dinheiro, você fica. Você pode cancelar a qualquer momento sem multas abusivas.'
         },
         {
             id: 7,
-            question: 'Quanto eu preciso investir?',
-            answer: 'Menos do que você perde todo mês deixando a casa vazia! Com menos de R$50 por dia em tráfego, já colocamos pizzarias pra fazer R$15 mil a mais no mês. Isso não é um gasto, é investimento no seu negócio, no seu sonho! A maioria dos donos joga dinheiro em promoção errada, post sem estratégia ou cupom que só tira lucro. A Nivix transforma cada real em pedido. Temos planos a partir de R$600 reais e o investimento minimo recomendado em tráfego é de R$450 por mês'
+            question: 'Como funcionam os relatórios de resultados?',
+            answer: 'Enviamos relatórios semanais e mensais detalhando cada centavo investido e o retorno gerado. Além disso, temos reuniões de alinhamento para ajustar a estratégia conforme sua demanda.'
         }
-    ]
+    ];
 
     return (
-        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center mt-18">  
-            <h1 className=" text-4xl text-white font-semibold">O que faremos?</h1>
-            <p className="text-[#FFB400] max-w-xl text-center px-4">Não dependa mais de Ifood, liberte-se das taxas altas e aumente sua margem, fidelize clientes e tenha o maior lucro na operação, é nisso que somos especialistas</p>
-            <motion.div className="flex mt-8 flex-col justify-center items-center lg:items-center lg:flex-row w-full lg:px-32">
-                <motion.div className="gap-1 flex flex-col justify-center w-full md:w-11/12 lg:w-11/12 h-fit max-with-[1400px] p-2 md:p-8 rounded-lg">
-                    {questions.map((questions) =>(
-                        <motion.div key={questions.id} className="flex flex-col items-center mb-4 last:mb-0 w-full px-2"> 
-                            <motion.button whileInView={{ opacity: 1, x: 0, transition: { delay: 0.3 } }} initial={{ opacity: 0, x: -20 }}  id='al' aria-label="Abrir ou fechar pergunta" onClick={() => setOpenQuestion(openQuestion === questions.id ? null : questions.id)} className="shadow-white/10 shadow-[1px_1px_0px_0px] w-full lg:w-[83%] text-left text-xl focus:outline-none p-5 bg-neutral-800/50 text-white font-extrabold rounded-[10px] flex justify-between items center">
-                                <span className="max-w-[90%] font-normal flex items-center gap-4">
-                                    <img src="/verificar.png" alt="" className="w-6"/>
-                                    {questions.question}
-                                </span>
-                                {openQuestion === questions.id ? <span className="text-[#FFB400]"><FaChevronUp  /></span> : <span><FaChevronDown /></span>}
-                            </motion.button>
-                            <AnimatePresence>
-                                {openQuestion === questions.id && (
-                                    <motion.div className="mt-2 text-[#FFB400] ml-4 w-full lg:w-[83%]"  initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto"}} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}>
-                                        <motion.p>{questions.answer}</motion.p>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
+        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center mt-24 py-16">  
+            <div className="w-full lg:w-[70%] flex flex-col items-center">
+                
+                {/* Header Principal */}
+                <div className="text-center mb-16 flex flex-col items-center">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="mb-4 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-sm gap-2 backdrop-blur-md"
+                    >
+                        <img className="w-4" src="/diamond.png" alt="" />
+                        <span className="font-medium tracking-wide text-sm">Respostas Diretas</span>
+                    </motion.div>
+
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-5xl font-semibold text-center text-white tracking-tight mx-auto"
+                    >
+                        Nós matamos todas as <span> </span>
+                        <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.7)]">
+                            suas dúvidas
+                        </span>
+                    </motion.h2>
+                </div>
+
+                {/* Grid Bento Box (Principais Dúvidas + Técnicas) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full px-2">
+                    {mainQuestions.map((item, index) => (
+                        <motion.div 
+                            key={item.id} 
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className={`${item.size} group relative p-8 rounded-[32px] bg-neutral-900/40 border border-neutral-800/60 hover:border-[#FFB400]/30 transition-all duration-500 overflow-hidden flex flex-col justify-between`}
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#FFB400]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div>
+                                <div className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-xl mb-6 border border-neutral-700/50 group-hover:scale-110 transition-transform duration-500" style={{ color: item.color }}>
+                                    {item.icon}
+                                </div>
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#FFB400] transition-colors">
+                                    {item.title}
+                                </h3>
+                                <p className="text-white/60 text-base md:text-lg leading-relaxed group-hover:text-white/80 transition-colors">
+                                    {item.answer}
+                                </p>
+                            </div>
                         </motion.div>
                     ))}
-                </motion.div>
-            </motion.div>
-            <h1 className="mt-8 text-4xl text-white font-semibold text-center px-2">Faz sentido para você?</h1>
-            <p className="text-white">Então entre em contato!</p>
-        <a href="#form" className="text-white bg-gradient-to-r from-[#FFB400] to-[#cb8e00] mt-8 transition font-semibold px-24 py-4 md:px-33 md:py-4 rounded-md">Entrar em Contato</a>
 
+                    {/* Card de Dúvidas Técnicas - Full Width Bento */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="md:col-span-3 relative p-8 rounded-[32px] bg-neutral-900/20 border border-neutral-800/40 hover:border-[#FFB400]/20 transition-all duration-500 overflow-hidden"
+                    >
+                        <h4 className="text-white/20 text-[10px] font-black uppercase tracking-[0.2em] mb-6 ml-1">Outras perguntas</h4>
+                        <div className="flex flex-col gap-1 w-full">
+                            {technicalQuestions.map((item) => (
+                                <div key={item.id} className="flex flex-col w-full"> 
+                                    <button 
+                                        onClick={() => setOpenQuestion(openQuestion === item.id ? null : item.id)} 
+                                        className="w-full text-left transition-all duration-300 py-2.5 px-2 rounded-xl flex justify-between items-center bg-transparent hover:bg-white/5 group"
+                                    >
+                                        <span className="text-white/30 group-hover:text-white/50 transition-colors font-medium text-xs md:text-sm">
+                                            {item.question}
+                                        </span>
+                                        <span className={`text-[10px] transition-transform duration-300 ${openQuestion === item.id ? "text-[#FFB400] rotate-180" : "text-white/20"}`}>
+                                            <FaChevronDown />
+                                        </span>
+                                    </button>
+                                    
+                                    <AnimatePresence>
+                                        {openQuestion === item.id && (
+                                            <motion.div 
+                                                initial={{ opacity: 0, height: 0 }} 
+                                                animate={{ opacity: 1, height: "auto" }} 
+                                                exit={{ opacity: 0, height: 0 }} 
+                                                className="overflow-hidden"
+                                            >
+                                                <div className="px-2 pb-4 pt-1 text-white/30 text-[11px] md:text-xs leading-relaxed w-full">
+                                                    {item.answer}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+
+                <div className="mt-12 text-center flex flex-col items-center">
+                    <h3 className="text-2xl font-semibold text-white">Pronto para ser o próximo case?</h3>
+                    <motion.a 
+                        href="#form" 
+                        whileHover={{ scale: 1.003 }}
+                        className="text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] mt-8 transition font-semibold px-24 py-5 md:px-33 md:py-5 rounded-2xl text-lg shadow-[0_15px_40px_rgba(0,255,42,0.15)]"
+                    >
+                        Iniciar Diagnóstico Gratuito
+                    </motion.a>
+                </div>
+            </div>
         </motion.section>
     );
 }

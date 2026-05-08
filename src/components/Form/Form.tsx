@@ -30,17 +30,14 @@ const investimentosPermitidos = [
 
 const schema = z.object({
   nome: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
-  // email: z.string().email("Email inválido"),
   telefone: z
-  .string()
-  .min(8, "Telefone inválido")
-  .max(15, "Telefone muito longo")
-  .refine((val) => /^\d+$/.test(val), {
-    message: "Digite apenas números",
-  })
-  .transform((val) => val.replace(/\D/g, "")), // remove não dígitos
-
-
+    .string()
+    .min(8, "Telefone inválido")
+    .max(15, "Telefone muito longo")
+    .refine((val) => /^\d+$/.test(val), {
+      message: "Digite apenas números",
+    })
+    .transform((val) => val.replace(/\D/g, "")),
   empresa: z.string().min(2, "Mínimo 2 caracteres").max(50, "Máximo 50 caracteres"),
   faturamento: z.enum(valoresPermitidos as [string, ...string[]], {
     errorMap: () => ({ message: "Selecione uma opção válida" }),
@@ -63,105 +60,127 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: FormData) => {
-    try {
-      const res = await fetch("/api/submit-contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    // Número do WhatsApp da Nivix
+    const whatsappNumber = "5554999656522"; 
+    
+    // Formatação da mensagem para o WhatsApp
+    const message = `Olá, tenho interesse na consultoria gratuita para meu negócio! Seguem meus dados:%0A%0A` +
+      `*Nome:* ${data.nome}%0A` +
+      `*Telefone:* ${data.telefone}%0A` +
+      `*Empresa:* ${data.empresa}%0A` +
+      `*Faturamento:* ${data.faturamento}%0A` +
+      `*Investimento em Marketing:* ${data.investimento}%0A%0A` +
+      `_Lead vindo da Landing Page Elite_`;
 
-      if (res.ok) {
-        reset();
-        console.log("Dados enviados com sucesso");
-        window.location.replace("/CadastroConcluido");
-      } else {
-        console.error("Erro ao enviar");
-      }
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    try {
+      // Simula um pequeno delay para feedback visual
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Redireciona para o WhatsApp
+      window.open(whatsappUrl, "_blank");
+      
+      // Também redireciona a página atual para a página de sucesso
+      window.location.replace("/CadastroConcluido");
+      
+      reset();
     } catch (error) {
-      console.error(error);
+      console.error("Erro ao processar redirecionamento:", error);
     }
   };
 
-  const inputStyle = "w-full rounded-md bg-neutral-700/80 border-2 border-neutral-700 placeholder-white text-white text-start px-3 py-5 md:py-4.5 md:px-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50";
+  const inputStyle = "w-full rounded-2xl bg-neutral-800/50 border-2 border-neutral-700/50 placeholder-neutral-500 text-white text-start px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50 transition-all backdrop-blur-sm";
 
   return (
     <div className="w-full flex items-center justify-center">
-      <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] lg:w-[90%] space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-5">
+        
         {/* Nome */}
-        <div>
+        <div className="relative group">
           <input
             {...register("nome")}
             className={inputStyle}
-            placeholder="Seu nome"
+            placeholder="Nome Completo"
           />
           {errors.nome && (
-            <p className="text-red-400 text-sm">{errors.nome.message}</p>
+            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.nome.message}</p>
           )}
         </div>
 
         {/* Telefone */}
-        <div>
+        <div className="relative group">
           <input
             {...register("telefone")}
             className={inputStyle}
-            placeholder="Telefone"
+            placeholder="WhatsApp (ex: 11999999999)"
           />
           {errors.telefone && (
-            <p className="text-red-400 text-sm">{errors.telefone.message}</p>
+            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.telefone.message}</p>
           )}
         </div>
 
         {/* Empresa */}
-        <div>
+        <div className="relative group">
           <input
             {...register("empresa")}
             className={inputStyle}
-            placeholder="Nome da empresa"
+            placeholder="Nome do seu Negócio"
           />
           {errors.empresa && (
-            <p className="text-red-400 text-sm">{errors.empresa.message}</p>
+            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.empresa.message}</p>
           )}
         </div>
 
         {/* Faturamento */}
-        <div>
+        <div className="relative">
           <select
             {...register("faturamento")}
-            className={inputStyle + ` appearance-none `}
+            className={inputStyle + ` appearance-none cursor-pointer`}
             defaultValue=""
           >
             <option value="" disabled>
               Qual seu faturamento mensal?
             </option>
             {valoresPermitidos.map((valor) => (
-              <option key={valor} value={valor}>
+              <option key={valor} value={valor} className="bg-neutral-900 text-white">
                 {valor}
               </option>
             ))}
           </select>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+          </div>
           {errors.faturamento && (
-            <p className="text-red-400 text-sm">{errors.faturamento.message}</p>
+            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.faturamento.message}</p>
           )}
         </div>
 
         {/* Investimento */}
-        <div>
+        <div className="relative">
           <select
             {...register("investimento")}
-            className={inputStyle + ` appearance-none `}
+            className={inputStyle + ` appearance-none cursor-pointer`}
             defaultValue=""
           >
             <option value="" disabled>
-              Quanto investe em marketing?
+              Quanto investe em marketing hoje?
             </option>
             {investimentosPermitidos.map((valor) => (
-              <option key={valor} value={valor}>
+              <option key={valor} value={valor} className="bg-neutral-900 text-white">
                 {valor}
               </option>
             ))}
           </select>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+            </svg>
+          </div>
           {errors.investimento && (
-            <p className="text-red-400 text-sm">{errors.investimento.message}</p>
+            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.investimento.message}</p>
           )}
         </div>
 
@@ -169,14 +188,14 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="hover:cursor-pointer w-full bg-yellow-500 hover:bg-yellow-400 disabled:bg-yellow-300 text-black font-semibold py-5 rounded-md transition"
+          className="w-full bg-gradient-to-r from-[#FFB400] to-[#cb8e00] hover:from-yellow-400 hover:to-yellow-500 disabled:opacity-50 text-black font-black py-5 rounded-2xl transition-all shadow-xl shadow-yellow-900/20 active:scale-[0.98] uppercase tracking-widest text-sm"
         >
-          {isSubmitting ? "Enviando..." : "Enviar"}
+          {isSubmitting ? "Enviando..." : "Entrar em Contato Agora"}
         </button>
 
         {isSubmitSuccessful && (
-          <p className="mt-2 text-green-400 font-semibold text-center">
-            Contato enviado com sucesso!
+          <p className="mt-2 text-green-400 font-bold text-center text-xs animate-pulse">
+            Redirecionando para nossa equipe de elite...
           </p>
         )}
       </form>

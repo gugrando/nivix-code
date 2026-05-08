@@ -1,66 +1,199 @@
+'use client';
+import { motion } from "framer-motion";
+import { FaCheck, FaUnlock, FaShieldHalved, FaArrowTrendUp } from "react-icons/fa6";
+
 const Plano = () => {
+    const features = [
+        { title: "Tráfego de Conversão", desc: "Anúncios segmentados de alta conversão." },
+        { title: "Social Media Essencial", desc: "Suas redes sociais profissionais que vão dar água na boca." },
+        { title: "Engenharia de Cardápio", desc: "Seu cardápio vira uma máquina de pedidos." },
+        { title: "Análise de Dados", desc: "Relatórios semanais e mensal pra você ver o progresso." },
+        { title: "CRM e Recorrência", desc: "Estratégias para reter a base de clientes e fazê-los pedir sempre." },
+        { title: "Automação de Vendas", desc: "IA e Chatbots para não perder pedidos por demora." },
+        { title: "Consultoria de Elite", desc: "Squad dedicado para otimizar toda sua operação." },
+        { title: "Suporte VIP 24/7", desc: "Acesso direto ao seu gestor via WhatsApp a qualquer hora." }
+    ];
+
     return (
-        <div className="flex flex-col items-center justify-center px-2 mt-20">
-            <h1 className="text-4xl font-bold text-center">Nosso Plano</h1>
-            <p className="text-center text-lg text-[#FFB400] max-w-xl">Plano único, sem pegadinhas ou surpresas, nosso contrato é livre de quaisquer amarras, mensal ou trimestral sem mudança de valores.</p>
-            <div className="flex flex-col items-center justify-center w-full md:w-[71%] gap-4 mt-4 px-2">
-                
-                <div className="w-full lg:w-2/3 h-fit bg-gradient-to-br from-yellow-800/50 to-[#F4B400]/80 border-2 border-[#F4B400]/50 rounded-2xl py-8 px-3 lg:px-8">
-                    {/* <h1 className="text-2xl font-normal text-center">Nivix Essential</h1> */}
-                    {/* <div className="flex flex-col items-center justify-center">
-                        <p className="text-center text-red-900 text-lg line-through">R$2690/m</p>
-                        <p className="text-center text-6xl font-bold text-green-600">R$800</p>
-                        <p className="text-center text-green-600">Mensal</p>
-                    </div> */}
-                    <p className="text-center py-2 border-t border-neutral-700/50 mt-8">Você está no controle e sabe tudo que vai receber, afinal não somos uma agência de post bonitinho e sim parceiros que vão te trazer resultados reais.</p>
-                    <div className="flex flex-col items-center justify-center mt-6 gap-3">
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Tráfego Pago de Conversão</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Social Media Essencial</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Otimização dos canais de venda</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Análise de Resultados</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Cobertura de Promoções</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Relatórios Semanais e Mensal</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Automação Essencial</p>
-                        </span>
-                        <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Suporte 24h</p>
-                        </span>
-                         <span className="flex items-center justify-start px-4 gap-4 w-full h-16 bg-neutral-900/80  border border-neutral-800 rounded-2xl">
-                            <span className="w-3 h-3 bg-[#F4B400] rounded-full"></span>
-                            <p className="">Serviços Extras para o Seu Negócio</p>
-                        </span>
-                        <h2 className="text-2xl font-bold text-[#FFB400] mt-3">Por que um valor tão baixo?</h2>
-                        <p className="text-center"> Nós sabemos que vamos te entregar resultados e você ficará mais tempo conosco, só ganhamos se você ganhar, acreditamos tanto no nosso serviço que temos um valor muito abaixo do mercado para atender a todos. <b>Não precisamos te prender por 3 meses pagando 2600/mês, acreditamos em parcerias duradouras e limpas.</b></p>
+        <section id="plano" className="relative flex flex-col items-center justify-center px-4 py-12 w-full overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute w-[600px] h-[600px] rounded-full bg-[#FFB400]/5 blur-[150px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+            <div className="w-full lg:w-[80%] flex flex-col items-center">
+                {/* Header da Seção */}
+                <div className="text-center mb-16 max-w-4xl">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="mb-4 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 backdrop-blur-md shadow-[0_0_15px_rgba(255,180,0,0.1)]"
+                    >
+                        <FaUnlock className="text-[9px]" />
+                        <span>Sem Amarras, Sem Pegadinhas</span>
+                    </motion.div>
+                    
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-tight"
+                    >
+                        Plano <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.5)]">Único</span>
+                    </motion.h2>
+                    
+                    <motion.p 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-neutral-400 text-lg md:text-2xl mt-4 leading-relaxed"
+                    >
+                        Garantimos <span className="text-white font-semibold">mais resultado e entrega</span> que todas agências do mercado, elevamos o nível da gastronomia brasileira.
+                    </motion.p>
+                </div>
+
+                {/* Card Principal de Preço */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    className="w-full bg-neutral-900/60 border-2 border-neutral-700/50 backdrop-blur-3xl rounded-[40px] p-8 lg:p-14 shadow-2xl relative overflow-hidden"
+                >
+                    <div className="absolute top-0 right-0 bg-[#FFB400] text-black font-black text-[10px] uppercase tracking-widest px-10 py-2 rotate-45 translate-x-[35px] translate-y-[25px] shadow-xl z-20 flex justify-center items-center text-center">
+                        Plano Essential
+                    </div>
+
+                    <div className="flex flex-col lg:flex-row gap-16">
+                        {/* Coluna de Preço - Foco Total na Âncora */}
+                        <div className="w-full lg:w-[35%] flex flex-col items-center justify-center lg:border-r border-neutral-800 lg:pr-12">
+                            <div className="text-center w-full">
+                                <div className="relative inline-block mb-4">
+                                    <span className="text-red-500/80 text-sm font-black line-through block uppercase tracking-widest">Mercado: R$ 2.600/mês</span>
+                                    <div className="absolute -right-16 -top-2 bg-red-600 text-white text-[8px] font-black px-2 py-0.5 rounded-full rotate-12 shadow-lg animate-pulse">
+                                        ARMADILHA
+                                    </div>
+                                </div>
+
+                                <div className="flex items-end gap-1 justify-center relative">
+                                    <span className="text-white text-3xl font-bold mb-6">R$</span>
+                                    <span className="text-9xl md:text-[10rem] font-black bg-gradient-to-b from-white via-white to-neutral-600 bg-clip-text text-transparent tracking-tighter leading-none">
+                                        800
+                                    </span>
+                                    <div className="flex flex-col items-start mb-6">
+                                        <span className="text-[#00ff2a] text-xl font-bold leading-none">/mês</span>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8 p-4 bg-neutral-900/50 border border-neutral-800 rounded-2xl">
+                                    <p className="text-[10px] text-neutral-400 font-bold uppercase tracking-widest leading-relaxed">
+                                        Nosso plano é único. <br/>
+                                        <span className="text-white">O preço não muda, sem pegadinhas.</span>
+                                    </p>
+                                </div>
+
+                                <div className="mt-8 flex flex-col items-center gap-2">
+                                    <p className="text-[#FFB400] text-xs font-black tracking-[0.2em] uppercase flex items-center gap-2">
+                                        <FaArrowTrendUp className="animate-bounce" /> Economia de R$ 21.600/ano
+                                    </p>
+                                    <div className="h-0.5 w-12 bg-neutral-800 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Coluna de Entregáveis + Copys de Segurança */}
+                        <div className="w-full lg:w-[65%] flex flex-col justify-between">
+                            {/* Grid de Entregáveis */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 mb-12">
+                                {features.map((feature, index) => (
+                                    <motion.div 
+                                        key={index}
+                                        initial={{ opacity: 0, x: 20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.05 }}
+                                        className="flex flex-col group"
+                                    >
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-5 h-5 rounded-full bg-[#FFB400]/10 flex items-center justify-center text-[#FFB400] text-[10px] shrink-0 group-hover:bg-[#FFB400] group-hover:text-black transition-all">
+                                                <FaCheck />
+                                            </div>
+                                            <span className="text-white text-base font-bold tracking-tight group-hover:text-[#FFB400] transition-colors">{feature.title}</span>
+                                        </div>
+                                        <p className="text-neutral-500 text-xs leading-relaxed ml-8 group-hover:text-neutral-300 transition-colors -mt-0.5">
+                                            {feature.desc}
+                                        </p>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            {/* Aviso de Personalização */}
+                            <div className="mb-6 px-4 py-3 bg-neutral-900/30 border border-neutral-800 rounded-2xl flex items-center gap-3">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#FFB400] animate-pulse"></div>
+                                <p className="text-[10px] md:text-xs text-neutral-400 font-medium">
+                                    Precisa de algo mais específico? <span className="text-white font-bold">Personalizamos o plano conforme a necessidade do seu negócio.</span>
+                                </p>
+                            </div>
+
+                            {/* Copys de Segurança e Risco Zero Rebaixadas */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-8 border-t border-neutral-800/50">
+                                <div className="p-5 bg-red-950/20 border border-red-500/30 rounded-3xl relative overflow-hidden group">
+                                    <div className="absolute inset-0 bg-red-500/5 animate-pulse pointer-events-none"></div>
+                                    <p className="text-xs text-red-200 leading-relaxed font-bold text-center relative z-10">
+                                        "Se não dermos um resultado de no mínimo que pague seu custo, <span className="text-white underline decoration-red-500">fechamos as portas e devolvemos seu dinheiro!</span>"
+                                    </p>
+                                </div>
+
+                                <div className="p-5 bg-neutral-800/40 border border-neutral-700/30 rounded-3xl flex items-center justify-center">
+                                    <p className="text-[11px] text-neutral-400 leading-relaxed text-center italic">
+                                        Só ganhamos se você ganhar. Por isso <span className="text-white font-bold">não temos contratos amarrados</span>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CTA Area */}
+                    <div className="mt-12 flex flex-col items-center border-t border-neutral-800 pt-10">
+                        <motion.a 
+                            href="#form" 
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="w-full max-w-lg text-center text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-black py-6 rounded-[24px] shadow-[0_20px_50px_rgba(0,255,42,0.2)] text-xl tracking-tight uppercase"
+                        >
+                            Ativar Minha Escala Agora
+                        </motion.a>
+                        
+                        <div className="mt-10 flex flex-col md:flex-row gap-8 items-center justify-center">
+                            <span className="flex items-center gap-2 text-[10px] font-black text-neutral-500 uppercase tracking-[0.2em]">
+                                <FaShieldHalved className="text-[#FFB400] text-sm" /> Risco Zero Garantido
+                            </span>
+                            <span className="hidden md:block w-1 h-1 rounded-full bg-neutral-800"></span>
+                            <span className="flex items-center gap-2 text-[10px] font-black text-neutral-500 uppercase tracking-[0.2em]">
+                                <FaUnlock className="text-[#FFB400] text-sm" /> Sem Multas de Rescisão
+                            </span>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Bottom Badges */}
+                <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+                    <div className="p-8 bg-neutral-900/40 border border-neutral-800/50 rounded-[40px] backdrop-blur-sm flex items-center gap-6 group hover:border-[#FFB400]/20 transition-all">
+                        <div className="w-16 h-16 rounded-[20px] bg-neutral-800 flex items-center justify-center shrink-0">
+                            <img src="/alerta.png" className="w-8 opacity-50 group-hover:opacity-100 transition-opacity" alt="" />
+                        </div>
+                        <div className="space-y-1">
+                             <p className="text-white font-bold text-lg leading-tight">Chega de contratos abusivos</p>
+                             <p className="text-neutral-500 text-sm">Você não precisa pagar R$ 2.600/mês para ter um marketing de elite.</p>
+                        </div>
+                    </div>
+                    <div className="p-8 bg-neutral-900/40 border border-neutral-800/50 rounded-[40px] backdrop-blur-sm flex items-center gap-6 group hover:border-[#FFB400]/20 transition-all">
+                        <div className="w-16 h-16 rounded-[20px] bg-neutral-800 flex items-center justify-center shrink-0">
+                            <img src="/mais.png" className="w-8 opacity-50 group-hover:opacity-100 transition-opacity" alt="" />
+                        </div>
+                        <div className="space-y-1">
+                             <p className="text-white font-bold text-lg leading-tight">Entrega além da média</p>
+                             <p className="text-neutral-500 text-sm">Receba mais entregáveis técnicos e estratégicos que qualquer outra agência.</p>
+                        </div>
                     </div>
                 </div>
-                <a href="#form" className="text-white bg-gradient-to-r hover:scale-[1.003] from-[#00ff2a] to-[#003f17] mt-4 transition font-semibold px-24 py-5 md:px-50 md:py-5 rounded-2xl">Entrar em Contato</a>
-                <span className="w-full h-16 bg-neutral-900/50 border border-neutral-700/50 rounded-2xl text-start flex items-center justify-center px-6 gap-2"><img src="alerta.png" alt="" />Todo risco é nosso, se não tiver resultado recebe seu dinheiro de volta</span> 
-                <span className="w-full h-16 bg-neutral-900/50 border border-neutral-700/50 rounded-2xl text-start flex items-center justify-center px-6 gap-2"> <img className="w-8" src="cadeado-aberto.png" alt="" />Você não paga R$2600/mês em um contrato amarrado de 3 meses</span>
-                <span className="w-full h-16 bg-neutral-900/50 border border-neutral-700/50 rounded-2xl text-start flex items-center justify-center px-6 gap-2"><img src="mais.png" alt="" />Você recebe mais entregáveis que qualquer outra agência</span>
             </div>
-        </div>
+        </section>
     );
-}     
- 
+}
+
 export default Plano;
