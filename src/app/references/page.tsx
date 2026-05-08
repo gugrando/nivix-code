@@ -217,7 +217,7 @@ export default function ReferencesPage() {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`flex items-center gap-2.5 px-6 py-3 rounded-xl border transition-all duration-300 text-xs font-medium ${selectedCategory === cat.id ? "bg-[#FFB400] text-black border-[#FFB400]" : "bg-neutral-900/40 border-neutral-800 text-neutral-400 hover:border-neutral-700 hover:text-white"}`}
+              className={`flex items-center gap-2.5 px-6 py-3 rounded-xl border transition-all duration-300 text-xs font-medium ${selectedCategory === cat.id ? "bg-[#FFB400] text-black border-[#FFB400]" : "bg-white/5 border-white/5 text-neutral-500 hover:border-white/10 hover:text-white"}`}
             >
               <span className="text-base">{cat.icon}</span>
               <span>{cat.name}</span>
@@ -253,83 +253,88 @@ export default function ReferencesPage() {
         </AnimatePresence>
       </section>
 
-      {/* Pop-up: Guia de Captação Nivix (Design Nivix Standard) */}
+      {/* Pop-up: Guia de Captação Nivix */}
       <AnimatePresence>
         {isGuideOpen && (
           <div className="fixed inset-0 flex items-center justify-center z-[150] p-4">
             <motion.div 
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                 onClick={() => setIsGuideOpen(false)}
-                className="absolute inset-0 bg-black/90 backdrop-blur-md"
+                className="absolute inset-0 bg-black/90 backdrop-blur-xl"
             />
             <motion.div 
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-4xl max-h-[90vh] bg-[#0d0d0d] border border-neutral-800 rounded-[40px] shadow-3xl overflow-y-auto no-scrollbar p-8 md:p-14"
+                className="relative w-full max-w-6xl max-h-[90vh] bg-[#0d0d0d] border border-neutral-800 rounded-[48px] shadow-3xl overflow-y-auto no-scrollbar p-8 md:p-16 lg:p-20"
             >
-                <button onClick={() => setIsGuideOpen(false)} className="absolute top-8 right-8 w-10 h-10 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center hover:bg-neutral-700 transition-colors z-50"><FaXmark /></button>
+                <button onClick={() => setIsGuideOpen(false)} className="absolute top-10 right-10 w-12 h-12 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center hover:bg-neutral-700 transition-colors z-50"><FaXmark className="text-xl" /></button>
                 
-                <div className="text-center mb-12">
-                    <div className="mb-4 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-sm gap-2 backdrop-blur-md">
+                <div className="text-center mb-16">
+                    <div className="mb-6 inline-flex items-center bg-neutral-900/50 border rounded-full px-5 py-2 border-[#FFB400]/30 text-[#FFB400] text-sm gap-2 backdrop-blur-md">
                         <FaBookOpen className="text-xs" />
-                        <span className="font-medium tracking-wide">Padrão Elite</span>
+                        <span className="font-semibold tracking-wide uppercase text-[10px]">Padrão Elite</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Guia de Captação</h2>
-                    <p className="text-neutral-400 mt-4 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-                        Siga estes pilares técnicos para garantir que seu material bruto se transforme em anúncios de <span className="text-white font-medium">Alta Performance.</span>
+                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">Guia de Captação</h2>
+                    <p className="text-neutral-400 mt-6 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                        Domine os pilares técnicos essenciais para transformar o material bruto do seu restaurante em <span className="text-white font-medium">Anúncios de Alta Performance.</span>
                     </p>
                 </div>
 
-                {/* 3 Pilares */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-20">
                     {guideData.map((pillar, i) => (
-                        <div key={i} className="flex flex-col bg-neutral-900/40 border border-neutral-800/60 rounded-[32px] p-8 hover:border-[#FFB400]/20 transition-all duration-300">
-                            <div className="w-12 h-12 rounded-2xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#FFB400] text-xl mb-6">
+                        <div key={i} className="flex flex-col bg-neutral-900/40 border border-neutral-800/60 rounded-[40px] p-10 hover:border-[#FFB400]/20 transition-all duration-300">
+                            <div className="w-16 h-16 rounded-2xl bg-neutral-800 border border-neutral-700 flex items-center justify-center text-[#FFB400] text-2xl mb-8">
                                 {pillar.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-6 tracking-tight">{pillar.title}</h3>
-                            <ul className="space-y-4 flex-1">
+                            <h3 className="text-2xl font-bold text-white mb-8 tracking-tight">{pillar.title}</h3>
+                            <ul className="space-y-5 flex-1">
                                 {pillar.items.map((item, j) => (
-                                    <li key={j} className="text-sm text-neutral-400 flex items-start gap-3 leading-relaxed">
-                                        <FaCircleCheck className="text-[#FFB400] mt-1 shrink-0 text-[10px]" /> {item}
+                                    <li key={j} className="text-sm md:text-base text-neutral-400 flex items-start gap-3 leading-relaxed">
+                                        <FaCircleCheck className="text-[#FFB400] mt-1.5 shrink-0 text-xs" /> {item}
                                     </li>
                                 ))}
                             </ul>
                             
                             <a 
                                 href={pillar.referenceLink} target="_blank"
-                                className="mt-8 flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 hover:border-[#FFB400]/30 transition-all group"
+                                className="mt-12 flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-[#FFB400]/30 transition-all group"
                             >
-                                <span className="text-[10px] font-bold text-neutral-400 group-hover:text-white uppercase tracking-widest">Exemplo</span>
-                                <FaArrowUpRightFromSquare className="text-[10px] text-neutral-600 group-hover:text-[#FFB400]" />
+                                <div className="flex flex-col gap-1">
+                                    <span className="text-[10px] font-black text-neutral-500 group-hover:text-[#FFB400] uppercase tracking-[0.2em]">Exemplo Real</span>
+                                    <span className="text-xs text-neutral-400 group-hover:text-white font-medium">Ver Referência</span>
+                                </div>
+                                <FaArrowUpRightFromSquare className="text-sm text-neutral-700 group-hover:text-[#FFB400] transition-colors" />
                             </a>
                         </div>
                     ))}
                 </div>
 
-                {/* O que evitar */}
-                <div className="bg-red-500/5 border border-red-500/10 p-8 rounded-[32px]">
-                    <div className="flex items-center gap-3 text-red-500/80 mb-6">
-                        <FaTriangleExclamation />
-                        <h4 className="font-bold uppercase tracking-widest text-[11px]">O que evitar a todo custo</h4>
+                <div className="bg-red-500/5 border border-red-500/10 p-12 rounded-[48px]">
+                    <div className="flex items-center gap-4 text-red-500 mb-10">
+                        <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20">
+                            <FaTriangleExclamation />
+                        </div>
+                        <h4 className="font-bold uppercase tracking-[0.2em] text-sm">O que evitar a todo custo</h4>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-6">
                         {avoidsData.map((avoid, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                                <div className="w-1 h-1 rounded-full bg-red-500/30"></div>
-                                <p className="text-xs text-neutral-500 font-medium">{avoid}</p>
+                            <div key={i} className="flex items-center gap-4">
+                                <div className="w-1.5 h-1.5 rounded-full bg-red-500/40"></div>
+                                <p className="text-sm text-neutral-500 font-medium">{avoid}</p>
                             </div>
                         ))}
                     </div>
                 </div>
                 
-                <button 
-                    onClick={() => setIsGuideOpen(false)}
-                    className="mt-12 w-full py-5 bg-white text-black rounded-2xl font-bold text-sm transition-all hover:bg-neutral-200 active:scale-[0.98]"
-                >
-                    Entendido, Vamos às Referências
-                </button>
+                <div className="mt-20 flex justify-center">
+                    <button 
+                        onClick={() => setIsGuideOpen(false)}
+                        className="w-full max-w-md py-6 bg-white text-black rounded-3xl font-black text-xs uppercase tracking-[0.3em] transition-all hover:bg-neutral-200 active:scale-[0.98] shadow-2xl"
+                    >
+                        Entendido, Vamos às Referências
+                    </button>
+                </div>
             </motion.div>
           </div>
         )}
@@ -347,7 +352,7 @@ export default function ReferencesPage() {
             <motion.div 
                 initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="fixed top-0 right-0 h-full w-full max-w-xl bg-[#0d0d0d] border-l border-neutral-800 z-[110] shadow-2xl p-8 md:p-12 overflow-y-auto no-scrollbar"
+                className="fixed top-0 right-0 h-full w-full max-w-xl bg-[#0d0d0d] border-l border-neutral-800 z-[110] shadow-2xl p-8 md:p-10 overflow-y-auto no-scrollbar"
             >
                 <div className="flex justify-between items-center mb-10">
                     <button onClick={() => setSelectedRef(null)} className="flex items-center gap-2 text-neutral-500 hover:text-white transition-colors uppercase text-[10px] font-black tracking-widest"><FaArrowLeft /> Voltar</button>

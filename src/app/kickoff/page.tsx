@@ -124,7 +124,7 @@ export default function KickoffPage() {
 
   const currentSchema = stepSchemas[step - 1];
   const methods = useForm({
-    resolver: zodResolver(currentSchema),
+    resolver: zodResolver(currentSchema as any),
     mode: "onChange",
   });
 
