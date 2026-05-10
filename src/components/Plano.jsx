@@ -1,8 +1,8 @@
 'use client';
 import { motion } from "framer-motion";
-import { FaCheck, FaUnlock, FaShieldHalved, FaArrowTrendUp } from "react-icons/fa6";
+import { FaCheck, FaUnlock, FaShieldHalved, FaArrowTrendUp, FaUsersViewfinder } from "react-icons/fa6";
 
-const Plano = () => {
+const Plano = ({ data }) => {
     const features = [
         { title: "Tráfego de Conversão", desc: "Anúncios segmentados de alta conversão." },
         { title: "Social Media Essencial", desc: "Suas redes sociais profissionais que vão dar água na boca." },
@@ -15,7 +15,7 @@ const Plano = () => {
     ];
 
     return (
-        <section id="plano" className="relative flex flex-col items-center justify-center px-4 py-12 w-full overflow-hidden">
+        <section id="planos" className="relative flex flex-col items-center justify-center px-4 py-12 w-full overflow-hidden">
             {/* Background Glow */}
             <div className="absolute w-[600px] h-[600px] rounded-full bg-[#FFB400]/5 blur-[150px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
@@ -45,7 +45,7 @@ const Plano = () => {
                         transition={{ delay: 0.2 }}
                         className="text-neutral-400 text-lg md:text-2xl mt-4 leading-relaxed"
                     >
-                        Garantimos <span className="text-white font-semibold">mais resultado e entrega</span> que todas agências do mercado, elevamos o nível da gastronomia brasileira.
+                        {data.desc}
                     </motion.p>
                 </div>
 
@@ -153,9 +153,9 @@ const Plano = () => {
                             href="#form" 
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            className="w-full max-w-lg text-center text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-black py-6 rounded-[24px] shadow-[0_20px_50px_rgba(0,255,42,0.2)] text-xl tracking-tight uppercase"
+                            className="w-full max-w-lg text-center text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-black py-6 rounded-[24px] shadow-[0_20px_50px_rgba(0,255,42,0.2)] text-xl"
                         >
-                            Ativar Minha Escala Agora
+                            Contratar Nivix
                         </motion.a>
                         
                         <div className="mt-10 flex flex-col md:flex-row gap-8 items-center justify-center">
@@ -172,25 +172,77 @@ const Plano = () => {
 
                 {/* Bottom Badges */}
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-                    <div className="p-8 bg-neutral-900/40 border border-neutral-800/50 rounded-[40px] backdrop-blur-sm flex items-center gap-6 group hover:border-[#FFB400]/20 transition-all">
-                        <div className="w-16 h-16 rounded-[20px] bg-neutral-800 flex items-center justify-center shrink-0">
-                            <img src="/alerta.png" className="w-8 opacity-50 group-hover:opacity-100 transition-opacity" alt="" />
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20, y: 20 }}
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                        whileHover={{ y: -5 }}
+                        className="p-8 bg-neutral-900/40 border border-neutral-800/60 rounded-[40px] backdrop-blur-xl flex items-center gap-6 group hover:border-[#FFB400]/30 transition-all duration-500 relative overflow-hidden"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#FFB400]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        <div className="w-16 h-16 rounded-[22px] bg-neutral-800/80 border border-neutral-700/50 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-[#FFB400]/40 transition-all duration-500 shadow-inner">
+                            <img src="/alerta.png" className="w-8 opacity-40 group-hover:opacity-100 transition-all duration-500 brightness-110" alt="" />
                         </div>
-                        <div className="space-y-1">
-                             <p className="text-white font-bold text-lg leading-tight">Chega de contratos abusivos</p>
-                             <p className="text-neutral-500 text-sm">Você não precisa pagar R$ 2.600/mês para ter um marketing de elite.</p>
+                        
+                        <div className="space-y-1.5 relative z-10">
+                             <p className="text-white font-bold text-xl leading-tight group-hover:text-[#FFB400] transition-colors">Chega de contratos abusivos</p>
+                             <p className="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300 transition-colors">
+                                Você não precisa ficar preso a contratos de 6 meses pagando <span className="text-white font-semibold">R$ 2.600/mês</span> para ter um marketing de elite.
+                             </p>
                         </div>
-                    </div>
-                    <div className="p-8 bg-neutral-900/40 border border-neutral-800/50 rounded-[40px] backdrop-blur-sm flex items-center gap-6 group hover:border-[#FFB400]/20 transition-all">
-                        <div className="w-16 h-16 rounded-[20px] bg-neutral-800 flex items-center justify-center shrink-0">
-                            <img src="/mais.png" className="w-8 opacity-50 group-hover:opacity-100 transition-opacity" alt="" />
+                    </motion.div>
+
+                    <motion.div 
+                        initial={{ opacity: 0, x: 20, y: 20 }}
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                        whileHover={{ y: -5 }}
+                        className="p-8 bg-neutral-900/40 border border-neutral-800/60 rounded-[40px] backdrop-blur-xl flex items-center gap-6 group hover:border-[#FFB400]/30 transition-all duration-500 relative overflow-hidden"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#FFB400]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        <div className="w-16 h-16 rounded-[22px] bg-neutral-800/80 border border-neutral-700/50 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:border-[#FFB400]/40 transition-all duration-500 shadow-inner">
+                            <img src="/mais.png" className="w-8 opacity-40 group-hover:opacity-100 transition-all duration-500 brightness-110" alt="" />
                         </div>
-                        <div className="space-y-1">
-                             <p className="text-white font-bold text-lg leading-tight">Entrega além da média</p>
-                             <p className="text-neutral-500 text-sm">Receba mais entregáveis técnicos e estratégicos que qualquer outra agência.</p>
+
+                        <div className="space-y-1.5 relative z-10">
+                             <p className="text-white font-bold text-xl leading-tight group-hover:text-[#FFB400] transition-colors">Entrega além da média</p>
+                             <p className="text-neutral-400 text-sm leading-relaxed group-hover:text-neutral-300 transition-colors">
+                                Receba mais entregáveis técnicos e estratégicos que <span className="text-white font-semibold">qualquer outra agência</span> do mercado.
+                             </p>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
+            </div>
+
+            {/* DIVISOR DE SEÇÃO - HARD DIVIDER (TRANSICAO PARA TIME) */}
+            <div className="w-full flex flex-col items-center mt-24 relative">
+                <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: 128 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-[1px] bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"
+                ></motion.div>
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10"
+                >
+                    <FaUsersViewfinder className="text-[#FFB400] text-sm" />
+                </motion.div>
+                <motion.div 
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    whileInView={{ scaleX: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"
+                ></motion.div>
             </div>
         </section>
     );

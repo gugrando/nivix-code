@@ -22,7 +22,7 @@ import {
     FaLightbulb
 } from "react-icons/fa6";
 
-const Ecosystem360 = () => {
+const Ecosystem360 = ({ data }) => {
     const solutions = [
         { icon: <FaBullhorn />, title: "Tráfego Pago" },
         { icon: <FaInstagram />, title: "Social Media" },
@@ -56,15 +56,19 @@ const Ecosystem360 = () => {
                     <motion.div 
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="mb-6 inline-flex items-center bg-[#FFB400]/10 border border-[#FFB400]/30 rounded-full px-5 py-2 text-[#FFB400] text-[11px] font-black uppercase tracking-[0.2em] gap-3 backdrop-blur-md"
                     >
                         <FaArrowsSpin className="animate-spin-slow" />
-                        <span>Assessoria 360º de Elite</span>
+                        <span>{data.badge}</span>
                     </motion.div>
                     
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                         className="text-4xl md:text-7xl font-bold text-white tracking-tight leading-[1.1]"
                     >
                         Tudo que você precisa <br />
@@ -74,12 +78,13 @@ const Ecosystem360 = () => {
                     </motion.h2>
                     
                     <motion.p 
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                         className="text-neutral-400 text-lg md:text-xl mt-8 leading-relaxed max-w-3xl"
                     >
-                        Não somos apenas uma assessoria, somos um ecossistema gastronômico completo. Dezenas de ferramentas e técnicas trabalhando 24h por você.
+                        {data.desc}
                     </motion.p>
                 </div>
 
@@ -88,12 +93,13 @@ const Ecosystem360 = () => {
                     {solutions.map((item, index) => (
                         <motion.div 
                             key={index}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
                             transition={{ 
-                                delay: index * 0.03,
-                                type: "spring",
-                                stiffness: 200
+                                delay: index * 0.05,
+                                duration: 0.5,
+                                ease: [0.22, 1, 0.36, 1]
                             }}
                             whileHover={{ 
                                 y: -5, 
@@ -110,9 +116,10 @@ const Ecosystem360 = () => {
 
                 {/* Card Especial: Futuro SaaS / Plataforma (Mantido conforme solicitado) */}
                 <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4 }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                     className="w-full max-w-6xl p-8 md:p-12 bg-gradient-to-br from-[#FFB400]/10 via-neutral-900/60 to-neutral-900 border-2 border-[#FFB400]/30 backdrop-blur-2xl rounded-[40px] relative overflow-hidden group"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFB400]/5 blur-[80px] -z-10 group-hover:scale-110 transition-transform duration-1000"></div>
@@ -128,7 +135,7 @@ const Ecosystem360 = () => {
                                 <span className="text-[#FFB400]">Lead Elite Plataform</span>
                             </h3>
                             <p className="text-neutral-400 text-base md:text-xl leading-relaxed max-w-2xl">
-                                Imagine ter o CRM, o Cardápio Digital, a Automação e suas Métricas de Growth em um único dashboard exclusivo. Estamos construindo o futuro da gestão gastronômica.
+                                Imagine ter o CRM, o Cardápio Digital, a Automação e suas Métricas de Growth em um único dashboard exclusivo. Estamos construindo o futuro da {data.platformTitle}.
                             </p>
                         </div>
                         
@@ -148,10 +155,37 @@ const Ecosystem360 = () => {
                         href="#form" 
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold px-20 py-5 rounded-2xl shadow-xl text-lg tracking-tight uppercase"
+                        className="text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold px-20 py-5 rounded-2xl shadow-xl text-lg"
                     >
-                        Quero o ecossistema 360
+                        Quero fazer parte
                     </motion.a>
+                </div>
+
+                {/* SOFT-BREAK (APENAS CONTINUIDADE) */}
+                <div className="mt-20 w-full flex flex-col items-center">
+                    <motion.div 
+                        initial={{ height: 0 }}
+                        whileInView={{ height: 96 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-[1px] bg-gradient-to-b from-neutral-800 to-[#FFB400] opacity-50"
+                    ></motion.div>
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="w-2 h-2 rounded-full bg-[#FFB400] shadow-[0_0_15px_#FFB400] animate-pulse my-4"
+                    ></motion.div>
+                    <motion.p 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 1 }}
+                        className="text-[#FFB400]/50 text-[10px] font-black uppercase tracking-[0.3em] mb-8"
+                    >
+                        TUDO ISSO EM UM...
+                    </motion.p>
                 </div>
             </div>
         </section>

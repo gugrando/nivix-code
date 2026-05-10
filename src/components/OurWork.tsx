@@ -8,9 +8,9 @@ const OurWork = () => {
     const mainQuestions = [
         {
             id: 1,
-            icon: <FaChartLine />,
-            title: 'Vai aumentar o número de pedidos?',
-            answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Já fizemos pizzarias saltarem de 12 para 97 pedidos em 21 dias com estratégias validadas de performance.',
+            icon: <FaStore />,
+            title: 'Meu restaurante é pequeno ou está "bagunçado", serve para mim?',
+            answer: 'Sim. Não somos apenas tráfego; ajudamos a organizar sua Engenharia de Cardápio e Fluxo de Atendimento. Preparamos sua casa para receber a demanda e escalar sem que o marketing se torne um balde furado.',
             size: 'md:col-span-2',
             color: '#FFB400'
         },
@@ -32,9 +32,9 @@ const OurWork = () => {
         },
         {
             id: 4,
-            icon: <FaStore />,
-            title: 'Serve para restaurante pequeno?',
-            answer: 'Nossos maiores cases começaram pequenos e hoje dominam o bairro. O segredo é ter coragem de escalar antes da concorrência.',
+            icon: <FaChartLine />,
+            title: 'Vai aumentar o número de pedidos?',
+            answer: 'Não somos agência de curtida. Somos agência de comanda batendo. Já fizemos pizzarias saltarem de 12 para 97 pedidos em 21 dias com estratégias validadas de performance.',
             size: 'md:col-span-2',
             color: '#FFEA00'
         }
@@ -43,23 +43,28 @@ const OurWork = () => {
     const technicalQuestions = [
         {
             id: 5,
-            question: 'O que exatamente a Nivix faz no dia a dia?',
-            answer: 'Cuidamos de tudo: gestão de tráfego pago (Meta/Google), criação de criativos de alta conversão, social media estratégico, otimização de cardápio digital e suporte 24h para sua operação de vendas.'
+            question: 'O que exatamente a Nivix faz no dia a dia do meu negócio?',
+            answer: 'Cuidamos de toda a inteligência de crescimento: gestão de tráfego (Meta/Google), criação de artes e vídeos para anúncios, otimização do seu cardápio digital e análise semanal de métricas para garantir que o lucro esteja subindo.'
         },
         {
             id: 6,
-            question: 'Preciso assinar um contrato de fidelidade?',
-            answer: 'Nosso contrato é livre de amarras. Acreditamos no resultado: se você está ganhando dinheiro, você fica. Você pode cancelar a qualquer momento sem multas abusivas.'
+            question: 'Preciso assinar um contrato de fidelidade de longo prazo?',
+            answer: 'Não. Nosso contrato é livre de amarras porque acreditamos no resultado. Se você está lucrando e satisfeito com o serviço, você fica. Você tem total liberdade para cancelar quando quiser, sem multas abusivas.'
         },
         {
             id: 7,
-            question: 'Como funcionam os relatórios de resultados?',
-            answer: 'Enviamos relatórios semanais e mensais detalhando cada centavo investido e o retorno gerado. Além disso, temos reuniões de alinhamento para ajustar a estratégia conforme sua demanda.'
+            question: 'Como eu acompanho os resultados e o que está sendo feito?',
+            answer: 'Transparência total. Você terá acesso a um grupo exclusivo no WhatsApp com seu gestor e receberá relatórios semanais e mensais detalhando cada centavo investido e o retorno em pedidos gerado.'
+        },
+        {
+            id: 8,
+            question: 'Além do valor da Nivix, quanto devo investir em anúncios?',
+            answer: 'O investimento em anúncios (Meta/Google) é pago diretamente às plataformas. Recomendamos começar com um valor que faça sentido para sua realidade atual e escalar conforme o lucro for voltando para o caixa.'
         }
     ];
 
     return (
-        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center mt-24 py-16">  
+        <motion.section id="FAQ" className="w-full h-full flex flex-col justify-center items-center pb-16 pt-4">  
             <div className="w-full lg:w-[70%] flex flex-col items-center">
                 
                 {/* Header Principal */}
@@ -67,15 +72,19 @@ const OurWork = () => {
                     <motion.div 
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="mb-4 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-sm gap-2 backdrop-blur-md"
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="mb-4 inline-flex items-center bg-neutral-900/50 border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 backdrop-blur-md"
                     >
                         <img className="w-4" src="/diamond.png" alt="" />
-                        <span className="font-medium tracking-wide text-sm">Respostas Diretas</span>
+                        <span>Respostas Diretas</span>
                     </motion.div>
 
                     <motion.h2 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                         className="text-4xl md:text-5xl font-semibold text-center text-white tracking-tight mx-auto"
                     >
                         Nós matamos todas as <span> </span>
@@ -90,20 +99,21 @@ const OurWork = () => {
                     {mainQuestions.map((item, index) => (
                         <motion.div 
                             key={item.id} 
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: index * 0.15 }}
                             className={`${item.size} group relative p-8 rounded-[32px] bg-neutral-900/40 border border-neutral-800/60 hover:border-[#FFB400]/30 transition-all duration-500 overflow-hidden flex flex-col justify-between`}
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-[#FFB400]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div>
-                                <div className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-xl mb-6 border border-neutral-700/50 group-hover:scale-110 transition-transform duration-500" style={{ color: item.color }}>
+                                <div className="w-12 h-12 rounded-2xl bg-neutral-800 flex items-center justify-center text-xl mb-6 border border-neutral-700/50 group-hover:scale-110 transition-transform duration-500 ease-out" style={{ color: item.color }}>
                                     {item.icon}
                                 </div>
-                                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#FFB400] transition-colors">
+                                <h3 className="text-xl md:text-2xl font-bold text-white mb-4 group-hover:text-[#FFB400] transition-colors duration-300">
                                     {item.title}
                                 </h3>
-                                <p className="text-white/60 text-base md:text-lg leading-relaxed group-hover:text-white/80 transition-colors">
+                                <p className="text-white/60 text-base md:text-lg leading-relaxed group-hover:text-white/80 transition-colors duration-300">
                                     {item.answer}
                                 </p>
                             </div>
@@ -112,8 +122,10 @@ const OurWork = () => {
 
                     {/* Card de Dúvidas Técnicas - Full Width Bento */}
                     <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                         className="md:col-span-3 relative p-8 rounded-[32px] bg-neutral-900/20 border border-neutral-800/40 hover:border-[#FFB400]/20 transition-all duration-500 overflow-hidden"
                     >
                         <h4 className="text-white/20 text-[10px] font-black uppercase tracking-[0.2em] mb-6 ml-1">Outras perguntas</h4>
@@ -157,11 +169,38 @@ const OurWork = () => {
                     <motion.a 
                         href="#form" 
                         whileHover={{ scale: 1.003 }}
-                        className="text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] mt-8 transition font-semibold px-24 py-5 md:px-33 md:py-5 rounded-2xl text-lg shadow-[0_15px_40px_rgba(0,255,42,0.15)]"
+                        className="text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] mt-8 transition font-semibold px-24 py-5 rounded-2xl text-lg shadow-[0_15px_40px_rgba(0,255,42,0.15)]"
                     >
                         Iniciar Diagnóstico Gratuito
                     </motion.a>
                 </div>
+            </div>
+
+            {/* DIVISOR DE SEÇÃO - HARD DIVIDER (TRANSICAO PARA DECISÃO FINAL) */}
+            <div className="w-full flex flex-col items-center mt-24 relative">
+                <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: 128 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-[1px] bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"
+                ></motion.div>
+                <motion.div 
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10"
+                >
+                    <FaArrowRight className="text-[#FFB400] text-sm" />
+                </motion.div>
+                <motion.div 
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    whileInView={{ scaleX: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"
+                ></motion.div>
             </div>
         </motion.section>
     );

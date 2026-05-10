@@ -4,6 +4,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
 
 const valoresPermitidos = [
   "Até R$ 20 mil",
@@ -49,6 +50,8 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
+const transitionObj = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+
 export default function ContactForm() {
   const {
     register,
@@ -92,111 +95,94 @@ export default function ContactForm() {
 
   const inputStyle = "w-full rounded-2xl bg-neutral-800/50 border-2 border-neutral-700/50 placeholder-neutral-500 text-white text-start px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#FFB400]/50 transition-all backdrop-blur-sm";
 
+  const formFields = [
+    { name: "nome", placeholder: "Nome Completo", type: "input" },
+    { name: "telefone", placeholder: "WhatsApp (ex: 11999999999)", type: "input" },
+    { name: "empresa", placeholder: "Nome do seu Negócio", type: "input" },
+    { 
+      name: "faturamento", 
+      placeholder: "Qual seu faturamento mensal?", 
+      type: "select", 
+      options: valoresPermitidos 
+    },
+    { 
+      name: "investimento", 
+      placeholder: "Quanto investe em marketing hoje?", 
+      type: "select", 
+      options: investimentosPermitidos 
+    }
+  ];
+
   return (
     <div className="w-full flex items-center justify-center">
       <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-5">
-        
-        {/* Nome */}
-        <div className="relative group">
-          <input
-            {...register("nome")}
-            className={inputStyle}
-            placeholder="Nome Completo"
-          />
-          {errors.nome && (
-            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.nome.message}</p>
-          )}
-        </div>
-
-        {/* Telefone */}
-        <div className="relative group">
-          <input
-            {...register("telefone")}
-            className={inputStyle}
-            placeholder="WhatsApp (ex: 11999999999)"
-          />
-          {errors.telefone && (
-            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.telefone.message}</p>
-          )}
-        </div>
-
-        {/* Empresa */}
-        <div className="relative group">
-          <input
-            {...register("empresa")}
-            className={inputStyle}
-            placeholder="Nome do seu Negócio"
-          />
-          {errors.empresa && (
-            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.empresa.message}</p>
-          )}
-        </div>
-
-        {/* Faturamento */}
-        <div className="relative">
-          <select
-            {...register("faturamento")}
-            className={inputStyle + ` appearance-none cursor-pointer`}
-            defaultValue=""
+        {formFields.map((field, index) => (
+          <motion.div 
+            key={field.name}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 + index * 0.1, ...transitionObj }}
+            className="relative group"
           >
-            <option value="" disabled>
-              Qual seu faturamento mensal?
-            </option>
-            {valoresPermitidos.map((valor) => (
-              <option key={valor} value={valor} className="bg-neutral-900 text-white">
-                {valor}
-              </option>
-            ))}
-          </select>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-            </svg>
-          </div>
-          {errors.faturamento && (
-            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.faturamento.message}</p>
-          )}
-        </div>
-
-        {/* Investimento */}
-        <div className="relative">
-          <select
-            {...register("investimento")}
-            className={inputStyle + ` appearance-none cursor-pointer`}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Quanto investe em marketing hoje?
-            </option>
-            {investimentosPermitidos.map((valor) => (
-              <option key={valor} value={valor} className="bg-neutral-900 text-white">
-                {valor}
-              </option>
-            ))}
-          </select>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-            </svg>
-          </div>
-          {errors.investimento && (
-            <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{errors.investimento.message}</p>
-          )}
-        </div>
+            {field.type === "input" ? (
+              <input
+                {...register(field.name as any)}
+                className={inputStyle}
+                placeholder={field.placeholder}
+              />
+            ) : (
+              <div className="relative">
+                <select
+                  {...register(field.name as any)}
+                  className={inputStyle + ` appearance-none cursor-pointer`}
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {field.placeholder}
+                  </option>
+                  {field.options?.map((valor) => (
+                    <option key={valor} value={valor} className="bg-neutral-900 text-white">
+                      {valor}
+                    </option>
+                  ))}
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                  </svg>
+                </div>
+              </div>
+            )}
+            {(errors as any)[field.name] && (
+              <p className="text-red-400 text-xs mt-1 ml-2 font-medium">{(errors as any)[field.name].message}</p>
+            )}
+          </motion.div>
+        ))}
 
         {/* Botão */}
-        <button
+        <motion.button
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, ...transitionObj }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-[#FFB400] to-[#cb8e00] hover:from-yellow-400 hover:to-yellow-500 disabled:opacity-50 text-black font-black py-5 rounded-2xl transition-all shadow-xl shadow-yellow-900/20 active:scale-[0.98] uppercase tracking-widest text-sm"
+          className="w-full bg-gradient-to-r from-[#FFB400] to-[#cb8e00] hover:from-yellow-400 hover:to-yellow-500 disabled:opacity-50 text-black font-black py-5 rounded-2xl transition-all shadow-xl shadow-yellow-900/20 text-sm"
         >
           {isSubmitting ? "Enviando..." : "Entrar em Contato Agora"}
-        </button>
+        </motion.button>
 
         {isSubmitSuccessful && (
-          <p className="mt-2 text-green-400 font-bold text-center text-xs animate-pulse">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-2 text-green-400 font-bold text-center text-xs animate-pulse"
+          >
             Redirecionando para nossa equipe de elite...
-          </p>
+          </motion.p>
         )}
       </form>
     </div>

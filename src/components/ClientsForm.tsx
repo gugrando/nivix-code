@@ -149,19 +149,37 @@ export default function ClientsCarousel() {
               href="#form" 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="block w-full text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold py-5 rounded-2xl shadow-[0_15px_40px_rgba(0,255,42,0.1)] text-lg tracking-tight uppercase"
+              className="block w-full text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] font-bold py-5 rounded-2xl shadow-[0_15px_40px_rgba(0,255,42,0.1)] text-lg"
             >
-              Ativar Minha Escala Agora
+              Entrar em contato
             </motion.a>
         </div>
 
         {/* DIVISOR DE SEÇÃO - HARD DIVIDER (CLEAN & REFINED) */}
         <div className="w-full flex flex-col items-center mt-12 relative">
-            <div className="w-[1px] h-32 bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"></div>
-            <div className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10">
+            <motion.div 
+                initial={{ height: 0 }}
+                whileInView={{ height: 128 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="w-[1px] bg-gradient-to-b from-[#FFB400] to-transparent opacity-50"
+            ></motion.div>
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="w-10 h-10 rounded-full bg-neutral-900 border border-[#FFB400]/30 flex items-center justify-center my-4 shadow-[0_0_20px_rgba(255,180,0,0.2)] z-10"
+            >
                 <FaArrowTrendUp className="text-[#FFB400] text-sm" />
-            </div>
-            <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"></div>
+            </motion.div>
+            <motion.div 
+                initial={{ scaleX: 0, opacity: 0 }}
+                whileInView={{ scaleX: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-700/20 to-transparent top-16 -z-0"
+            ></motion.div>
         </div>
       </div>
     </section>

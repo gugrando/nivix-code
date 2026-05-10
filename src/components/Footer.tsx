@@ -42,10 +42,11 @@ const Footer = () => {
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
                         <h4 className="text-white font-bold tracking-[0.2em] uppercase text-[10px] mb-6 opacity-50">Navegação</h4>
                         <ul className="space-y-3">
-                            <li><a href="#depoimentos" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium uppercase tracking-wider">Resultados</a></li>
-                            <li><a href="#plano" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium uppercase tracking-wider">Plano Elite</a></li>
-                            <li><a href="#time" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium uppercase tracking-wider">Nosso Time</a></li>
-                            <li><a href="#FAQ" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium uppercase tracking-wider">FAQ</a></li>
+                            <li><a href="#depoimentos" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Resultados</a></li>
+                            <li><a href="#ecossistema" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Ecossistema</a></li>
+                            <li><a href="#planos" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Planos</a></li>
+                            <li><a href="#time" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Sobre nós</a></li>
+                            <li><a href="#FAQ" className="text-neutral-500 hover:text-[#FFB400] transition-colors text-xs font-medium tracking-wide">Dúvidas</a></li>
                         </ul>
                     </div>
 

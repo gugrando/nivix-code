@@ -1,28 +1,73 @@
 'use client'
-const Headline = () => {
+import { motion } from "framer-motion";
+
+interface HeadlineProps {
+    data: {
+        highlight: string;
+        subtext: string;
+    }
+}
+
+const transitionObj = { duration: 0.8, ease: [0.22, 1, 0.36, 1] };
+
+const Headline = ({ data }: HeadlineProps) => {
     return (
-        <div className="w-full h-fit mt-16 flex justify-center flex-col items-center ">
-           <div className="mb-4 flex items-center relative justify-center border rounded-full px-4 py-1 border-[#FFB400] text-[#FFB400] text-sm gap-2">
-            <img className="w-3" src="/cadeado-aberto.png" alt="" />Contrato livre de amarras
-            {/* <span className="bg-[#FFB400] absolute right-[7px] h-1 w-1 inline-block rounded-full"></span> */}
-           </div>
-            <h1 className="text-5xl  [line-height:1] font-semibold text-center md:text-6xl max-w-6xl">
-             A melhor equipe de <span> </span>
-                <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,180,0,0.7)]">
-                    Marketing para Restaurantes
-                </span><span> </span>
+        <motion.div 
+            initial="hidden"
+            animate="visible"
+            variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.15 }
+                }
+            }}
+            className="w-full h-fit mt-16 flex justify-center flex-col items-center"
+        >
+           <motion.div 
+               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
+               className="mb-6 flex items-center relative justify-center border rounded-full px-4 py-1.5 border-[#FFB400]/30 text-[#FFB400] text-[10px] font-black uppercase tracking-[0.2em] gap-2 bg-[#FFB400]/5 backdrop-blur-md"
+           >
+            <img className="w-3 opacity-80" src="/cadeado-aberto.png" alt="" />
+            <span>Contrato livre de amarras</span>
+           </motion.div>
+
+            <motion.h1 
+                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
+                className="text-5xl [line-height:1.1] font-black text-center md:text-6xl max-w-6xl tracking-tight text-white"
+            >
+             A melhor equipe de <br className="md:hidden" />
+                <span className="bg-gradient-to-r from-[#FFD700] via-[#FFB400] to-[#FFEA00] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(255,180,0,0.5)]">
+                    {data.highlight}
+                </span> <br className="md:hidden" />
                 do Brasil
-            </h1>
-            <p className="text-center md:text-2xl mt-4 max-w-sm md:max-w-full px-4 xl:px-[10rem] 2xl:px-[30rem]">
-                Com 5 anos de experiência no mercado gastronomico, validamos um método que faz qualquer um <strong>vender 10x mais</strong>.
-            </p>
-            <a href="#form" className="text-white bg-gradient-to-r hover:scale-[1.003] from-[#00ff2a] to-[#003f17] mt-12 transition font-semibold px-24 py-5 md:px-50 md:py-5 rounded-2xl">Entrar em Contato</a>
-            <div className="w-full h-fit flex justify-center mt-8">
+            </motion.h1>
+
+            <motion.p 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: transitionObj } }}
+                className="text-center text-lg md:text-2xl mt-6 max-w-4xl px-6 text-neutral-400 leading-relaxed font-medium"
+                dangerouslySetInnerHTML={{ __html: data.subtext }}
+            />
+
+            <motion.a 
+                href="#form" 
+                variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: transitionObj } }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-white bg-gradient-to-r from-[#00ff2a] to-[#003f17] mt-12 px-16 py-5 md:px-24 md:py-6 rounded-2xl font-black text-lg shadow-[0_20px_50px_rgba(0,255,42,0.2)] hover:shadow-[0_20px_60px_rgba(0,255,42,0.4)] transition-all duration-500"
+            >
+                Entrar em Contato
+            </motion.a>
+
+            <motion.div 
+                variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 1, duration: 1 } } }}
+                className="w-full h-fit flex justify-center mt-12"
+            >
                 <a href="#form">
-                    <img src="/down-arrow.png" className="w-5 h-5 animate-bounce mt-6" />
+                    <img src="/down-arrow.png" className="w-6 h-6 animate-bounce opacity-50 hover:opacity-100 transition-opacity" />
                 </a>
-            </div>
-        </div> 
+            </motion.div>
+        </motion.div> 
     );
 }
  
